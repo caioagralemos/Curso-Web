@@ -23,62 +23,185 @@
         </nav>
     </header>
 
-    </section>
-    <h1>Demo de Forms</h1>
+    <section>
+        <h1>Demo de Forms</h1>
 
-    <!-- action - pra onde os dados desse form devem ir -->
-    <form action="https://en.wikipedia.org/wiki/">
-        <p>
-            <label for="user">digite seu usuário:</label>
-            <input type="text" placeholder="usuário" id="user">
-        </p>
-
-        <p>
-            <label for="pass">digite sua senha:</label>
-            <input type="password" placeholder="senha" id="pass">
-        </p>
-
-        <p>
-            <label for="num">digite seu número:</label>
-            <input type="number" placeholder="numero" id="num">
-        </p>
-
-        <p>
-            <label for="cor">escolha sua cor:</label>
-            <input type="color" id="cor">
-        </p>
-
-        <!-- botões dentro de uma action, a menos que especificados para não faze-lo, vão executar a action -->
-        <button>enviar</button> <!-- type padrão de button = submit -->
-        <button type="button">esse botão não faz nada</button>
-
-    </form>
-    </section>
-
-    </section>
-    <h1>Demo 2</h1>
-
-    <!-- action - pra onde os dados desse form devem ir -->
-    <form action="">
-        <div class="preference">
-            <!-- a class de uma div é um jeito de referenciar o que a div contém -->
+        <!-- action - pra onde os dados desse form devem ir -->
+        <form action="/nomes/">
             <p>
-                <label for="queijo">Você gosta de queijo?</label>
-                <input type="checkbox" name="queijo" id="queijo">
+                <label for="user">digite seu usuário:</label>
+                <input type="text" placeholder="usuário" id="user" name="user">
             </p>
 
-        </div>
-
-        <div class="preference">
             <p>
-                <label for="presunto">Você gosta de presunto?</label>
-                <input type="checkbox" name="presunto" id="presunto">
+                <label for="pass">digite sua senha:</label>
+                <input type="password" placeholder="senha" id="pass" name="password">
             </p>
 
-        </div>
-    </form>
+            <p>
+                <label for="num">digite seu número:</label>
+                <input type="number" placeholder="numero" id="num" name="num">
+            </p>
+
+            <p>
+                <label for="cor">escolha sua cor:</label>
+                <input type="color" id="cor" name="color">
+            </p>
+
+            <!-- botões dentro de uma action, a menos que especificados para não faze-lo, vão executar a action -->
+            <button>enviar</button> <!-- type padrão de button = submit -->
+            <button type="button">esse botão não faz nada</button>
+
+        </form>
     </section>
 
+    <section>
+
+        <h1>Search</h1>
+
+        <!-- atributo name="" cria uma resposta na url nome="resposta", importante pra mecanismos de search e etc -->
+
+        <form action="https://www.reddit.com/search/">
+            <p>
+                <label for="search">Search on Reddit:</label>
+                <input type="text" id="search" name="q">
+                <button>Reddit</button>
+            </p>
+        </form>
+
+        <form action="https://en.wikipedia.org/wiki/">
+            <p>
+                <label for="search">Search on Wikipedia:</label>
+                <input type="text" id="search" name="search">
+                <button>Wikipedia</button>
+            </p>
+        </form>
+
+        <form action="https://www.google.com/search">
+            <p>
+                <label for="search">Search on Google:</label>
+                <input type="text" id="search" name="q">
+                <button>Google</button>
+            </p>
+        </form>
+
+        <form action="https://www.youtube.com/results?">
+            <p>
+                <label for="search">Search on Youtube:</label>
+                <input type="text" id="search" name="search_query">
+                <button>Youtube</button>
+            </p>
+        </form>
+    </section>
+
+    <section>
+        <h1>Demo 3 - Sanduíche</h1>
+
+        <form action="/sanduiche/">
+            <div class="preference">
+                <!-- a class de uma div é um jeito de referenciar o que a div contém -->
+                <p>
+                    <label for="queijo">Você gosta de queijo?</label>
+                    <input type="checkbox" name="queijo" id="queijo">
+                </p>
+
+            </div>
+
+            <div class="preference">
+                <p>
+                    <label for="presunto">Você gosta de presunto?</label>
+                    <input type="checkbox" name="presunto" id="presunto">
+                </p>
+            </div>
+
+            <button>Submit</button>
+        </form>
+    </section>
+
+    <section>
+        <h1>Demo 4 - McDonalds</h1>
+
+        <p>
+            <!-- todos tem que ter o mesmo nome para que estejam conectados -->
+        <h3>Escolha seu sanduíche:</h3>
+
+        <form action="/sanduba/">
+            <p>
+                <label for="big-mac">Big Mac</label>
+                <input type="radio" name="sabor" id="big-mac" value="big-mac">
+            </p>
+
+            <p>
+                <label for="cheddar-mc-melt">Cheddar McMelt</label>
+                <input type="radio" name="sabor" id="cheddar-mc-melt" value="cheddar-mc-melt">
+            </p>
+
+            <p>
+                <label for="quarteirao-com-queijo">Quarteirão com Queijo</label>
+                <input type="radio" name="sabor" id="quarteirao-com-queijo" value="quarteirao-com-queijo">
+            </p>
+
+            <p>
+                <label for="drink-select">Escolha a bebida:
+                <select name="bebida" id="drink-select">
+                    <option value="">--Escolha sua bebida--</option>
+                    <option value="coca">Coca Cola</option>
+                    <option value="guarana">Guaraná Antártica</option>
+                    <option value="agua">Água 500ml</option>
+                    <option value="suco-de-laranja">Suco de Laranja 500ml</option>
+                    <option value="milkshake">Milkshake 350ml</option>
+
+                </select>
+            </p>
+            </label>
+
+            <p>
+                <label for="queijo">Quantidade de queijo:</label>
+                <input type="range" id="queijo" min="0" max="5" step="1" name="qnt_queijo">
+            </p>
+
+            <p>
+                <label for="obs">Observações:</label>
+                <textarea name="feedback" id="obs" cols="33" rows="2" placeholder="ex: sem cebola..."></textarea>
+            </p>
+
+            <button>Submit</button>
+        </form>
+    </section>
+
+    <section>
+        <h1>Demo 5 - Validação</h1>
+
+        <p>
+
+        <h3>Cadastro:</h3>
+
+        <form action="/dummy">
+            <p>
+                <label for="first">Nome<sup>*</sup>:</label>
+                <input type="text" name="first" id="first" required>
+                <!-- Required faz com que não seja possível dar submit com esse campo vazio -->
+            </p>
+            
+            <p>
+                <label for="surname">Sobrenome:</label>
+                <input type="text" name="surname" id="surname">
+            </p>
+
+            <p>
+                <label for="username">Nome de Usuário<sup>*</sup>:</label>
+                <input type="text" name="username" id="username" minlength="5" maxlength="20" required>
+            </p>
+
+            <p>
+                <label for="pass">Senha<sup>*</sup>:</label>
+                <input type="password" name="pass" id="pass" minlength="6" required>
+            </p>
+
+            <button>Cadastrar</button>
+            
+        </form>
+    </section>
 
 </body>
 
