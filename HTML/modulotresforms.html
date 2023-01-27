@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Módulo 3 - Forms</title>
 </head>
+
 <body>
 
     <header>
@@ -20,6 +22,64 @@
             </ul>
         </nav>
     </header>
-    
+
+    </section>
+    <h1>Demo de Forms</h1>
+
+    <!-- action - pra onde os dados desse form devem ir -->
+    <form action="https://en.wikipedia.org/wiki/">
+        <p>
+            <label for="user">digite seu usuário:</label>
+            <input type="text" placeholder="usuário" id="user">
+        </p>
+
+        <p>
+            <label for="pass">digite sua senha:</label>
+            <input type="password" placeholder="senha" id="pass">
+        </p>
+
+        <p>
+            <label for="num">digite seu número:</label>
+            <input type="number" placeholder="numero" id="num">
+        </p>
+
+        <p>
+            <label for="cor">escolha sua cor:</label>
+            <input type="color" id="cor">
+        </p>
+
+        <!-- botões dentro de uma action, a menos que especificados para não faze-lo, vão executar a action -->
+        <button>enviar</button> <!-- type padrão de button = submit -->
+        <button type="button">esse botão não faz nada</button>
+
+    </form>
+    </section>
+
+    </section>
+    <h1>Demo 2</h1>
+
+    <!-- action - pra onde os dados desse form devem ir -->
+    <form action="">
+        <div class="preference">
+            <!-- a class de uma div é um jeito de referenciar o que a div contém -->
+            <p>
+                <label for="queijo">Você gosta de queijo?</label>
+                <input type="checkbox" name="queijo" id="queijo">
+            </p>
+
+        </div>
+
+        <div class="preference">
+            <p>
+                <label for="presunto">Você gosta de presunto?</label>
+                <input type="checkbox" name="presunto" id="presunto">
+            </p>
+
+        </div>
+    </form>
+    </section>
+
+
 </body>
+
 </html>
