@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Minha segunda página HTML</title>
+
+<body>
+
+    <!-- Main, header, footer, nav, section, article, aside, summary e details -->
+    <!-- funcionam assim como divs mas com palavras que tem um significado adequado. Não muda nada na aparencia, é só por clean code -->
+
+    <!-- o VSCODE tem um atalho pra HTML chamado emmet -->
+    <!-- exemplos de emmet: h1+h2+h2 ou main>section>h1 ou ul>li*5 -->
+
+    <header>
+        <nav>
+            <ul>
+                <li><a href="moduloum.html">Módulo 1</a></li>
+                <li><a href="modulodois.html">Módulo 2</a></li>
+                <li><a href="modulotres.html">Módulo 3</a></li>
+                <li><a href="aboutme.html">About me</a></li>
+
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <summary>
+            <h1>Chicken</h1>
+
+            <header>Gallus gallus domesticus</header>
+
+            <hr> <!-- hr = horizontal line  -->
+
+            <p><img src="Fotos/chicken.jpg" alt="Photo of a baby chicken"></p>
+
+            <div>
+                <!-- div serve para criar um bloco horizontal de informações e será mais útil com CSS -->
+                <a href="https://www.google.com">Search about this @ Google</a>
+                <a href="https://en.wikipedia.org/wiki/Chicken"> Wikipedia @ Chicken</a>
+            </div>
+
+            <!-- Span é um wrapping block assim como div mas que é alinhado com o texto normal -->
+        </summary>
+
+        <section>
+            <p>The <b>chicken</b> (Gallus gallus domesticus) is a domesticated junglefowl species, with attributes of
+                wild
+                species such as the grey and the Ceylon junglefowl[1] that are originally from Southeastern Asia.
+                <span>Rooster</span> or <span>cock</span> is a term for an adult male bird, and a younger male may be
+                called
+                <span>cockerel</span>.
+                A male that has been castrated is a <span>capon</span>. An adult female bird is called a
+                <span>hen</span>
+                and a
+                sexually immature female
+                is called a <span>pullet</span>.
+                Humans now keep chickens primarily as a source of food (consuming both their meat and eggs) and as pets.
+                Traditionally they were also bred for cockfighting, which is still practiced in some places.
+                The chicken domesticated for its meat are Broilers and for its eggs are Layers.
+            </p>
+
+            <p>Chickens are one of the most common and widespread domestic animals, with a total population of 23.7
+                billion
+                as
+                of 2018,[2] up from more than 19 billion in 2011.
+                There are more chickens in the world than any other bird.
+                There are numerous cultural references to chickens – in myth, folklore and religion, and in language and
+                literature.</p>
+
+            <p>Genetic studies have pointed to multiple maternal origin theories of within South Asia, Southeast Asia,
+                and
+                East
+                Asia,[3] but the clade found in the Americas, Europe, the Middle East and Africa originated from the
+                Indian
+                subcontinent.
+                From ancient India, the chicken spread to the Eastern Mediterranean.
+                They appear in Egypt in the mid-15th century BC, with the "bird that gives birth every day" having come
+                from
+                the
+                land between Syria and Shinar, Babylonia, according to the annals of Thutmose III. They are known in
+                Greece
+                from
+                the 5th century BC.</p>
+
+            <p>Important fact about chicken: They drink H<sub>2</sub>O in like <sup>1</sup>/<sub>4</sub> of their day.
+            </p>
+            <!-- sub é sigla pra subscript, texto abaixo de texto -->
+        </section>
+
+        <section>
+            <h2>Poem on Chicken (line break)</h2>
+            <!-- <br> funciona como uma quebra de linha (\n) dentro de um parágrafo-->
+            <p><b>Last Night I Dreamed of Chickens – A Found Poem</b><br><br>
+
+                Do you remember, I held empty hands to you<br>
+                without a thought of eggs and bacon?<br><br>
+
+                Stupid in candlelight, hearing rain,<br>
+                waiting fulfillment. . <br><br>
+
+                It was all very <simple:br></simple:br>
+                Last night I dreamed of chickens.. </p>
+
+            <p>—Maureen Doallas<sup><a href="https://writingwithoutpaper.blogspot.com/">[1]</a></sup></p>
+            <!-- sup é sigla pra superscript, texto acima de texto assim como um expoente -->
+        </section>
+
+        <section>
+            <h2>References</h2>
+
+            <ul>
+                <li><a href="https://en.wikipedia.org/wiki/Chicken">Wikipedia on Chickens</a></li>
+                <li><a href="https://pt.wikipedia.org/wiki/Galinha">Portuguese Wikipedia on Chickens</a></li>
+                <li><a href="https://www.lipsum.com/">Lorem ipsum generator</a></li>
+                <li><a href="teste.html">Receba seu certificado de trouxa</a></li>
+            </ul>
+        </section>
+
+
+    </main>
+
+    <footer>
+        <br><br>
+        <h3>HTML entity codes</h3>
+        <!-- existem caracteres especificos que quebram a linguagem html ou que simplesmente são muito diferentes e não existem em teclados -->
+        <!-- para isso utilizamos os entity codes que são maneiras de referenciar esses caracteres para que apareçam na página -->
+        &trade; &lt; &gt; &amp; &spades; &hearts;
+    </footer>
+
+</body>
+</head>
+
+</html>
