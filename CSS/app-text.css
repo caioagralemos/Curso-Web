@@ -1,7 +1,6 @@
-
-h1{
+h1 {
     color: rgb(255, 255, 255);
-    text-align: center; 
+    text-align: center;
     /* alinha o texto horizontalmente */
     font-weight: 100;
     /* o quão escura vai ser a fonte */
@@ -17,22 +16,22 @@ h1{
     /* também é possível entrar com uma familia de fontes com várias opções */
 }
 
-h2{
+h2 {
     color: #8a2be2;
 }
 
-p{
+p {
     color: white;
     text-align: left;
     line-height: 1.5;
     /* a distância vertical de uma linha pra outra */
 }
 
-button{
+button {
     background-color: darkred;
     color: white;
 }
 
-body{
+body {
     background-color: black;
 }

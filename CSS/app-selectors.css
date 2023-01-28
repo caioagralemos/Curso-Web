@@ -5,43 +5,139 @@
     background-color: aliceblue; */
 }
 
-button{
+button {
     /* selecione todos os elementos de um componente */
-    background-color: #2a9d8f;
+    background-color: #457b9d;
     font-size: 20px;
 }
 
-h1, h2, p {
+h1,
+p {
     /* selecione multiplos elementos para alterá-los igualmente */
-    color: white;
+    color: #f1faee;
 }
 
-body{
-    background-color: #264653;
+body {
+    background-color: #1d3557;
 }
 
-a{
-    color: gray;
+a {
+    color: #f1faee;
+    text-decoration: none;
 }
 
-#login,#signup{
+#login,
+#signup {
     /* ID selector, seleciona pelo ID  */
     /* Sintaxe: #id */
     /* um ID de elemento não deve se repetir nenhuma vez em uma página HTML */
     background-color: #264653;
-    color: white;
+    color: #f1faee;
 }
 
-.title{
+.title {
     /* class selector */
     /* Sintaxe: .class */
     /* você pode criar uma classe com muitos elementos com a mesma função e alterar todos dessa maneira */
-    color: white;
-    text-decoration: white none;
+    color: #f1faee;
+    text-decoration: #f1faee none;
 }
 
-.tag{
+.tag {
     background-color: #e63946;
+    border-radius: 4px;
+    /* rounded background :) */
     color: #264653;
     font-size: 16px;
 }
+
+li a {
+    /* descendant selector */
+    /* nesse caso, todas as anchor tags dentro de elementos de listas */
+    color: #e63946;
+}
+
+.post {
+    color: #80808092 !important;
+    /* important joga os principios de especificidade no lixo e torna essa declaração o mais importante */
+}
+
+.post a {
+    /* todas as anchor tags dentro da classe post */
+    color: #80808092;
+}
+
+input+button {
+    /* adjacent selector */
+    /* todos os botões que vierem depois de um input seriam alterados */
+}
+
+footer>a {
+    /* direct child selector */
+    /* todas as anchor tags que vierem diretamente após de um footer */
+}
+
+.login {
+    text-align: right;
+}
+
+input[type="password"] {
+    /* atribute selector */
+    /* mexe com todos os inputs que o tipo é password, ou seja, com um atributo específico */
+    /* quase nunca usado */
+    text-decoration: line-through;
+}
+
+a:hover {
+    /* pseudo classes */
+    /* classe hover de a, hover é o que o objeto vai fazer quando o mouse passar por cima */
+    text-decoration: underline;
+}
+
+button:active {
+    /* classe active muda um botão na hora em que ele for clicado */
+    background-color: #e63946;
+}
+
+/* .square:nth-of-type(2n){
+    background-color: black;
+}
+
+.square:nth-of-type(2n+1){
+    background-color: red;
+}
+
+exemplo de pseudo classe de repetição
+ */
+
+h2::first-letter {
+    /* pseudo-elementos */
+    /* sintaxe (elemento::pseudo-elemento) */
+    /* nesse exemplo, mexe em todas as primeiras letras de todos os */
+    font-size: 27px;
+}
+
+p::selection {
+    /* nesse exemplo, muda a cor de quando você seleciona um texto */
+    background-color: cornflowerblue;
+}
+
+p::selection {
+    /* esse exemplo é pra explicar CASCADE, que é a ordem que as coisas funcionam em CSS */
+    /* note que na declaração acima dissemos que a cor do background do texto quando selecionado
+    é um tom de azul. mas agora, declaramos a mesma coisa de novo, só que com vermelho. em CSS,
+    sempre o que vai predominar é o que aparecer por último, pois ele vai "pintar por cima" do anterior */
+    background-color: #e63946;
+}
+
+/* RANKING DE ESPECIFICIDADE:
+    (inline styles, built-in HTML) - ninguém usa
+    ID >
+    CLASS >
+    ELEMENT.
+    regra dos três digitos (id class element)
+    se houver um empate, a regra do CASCADE entra.*/
+
+/* princípio de HERANÇA em CSS:
+    em css, se um elemento não é atribuído um detalhe, mas alguma ou algumas (nesse caso, a mais específica)
+    de suas categorias-mães receberam esse atríbuto, ela recebe de herança */
