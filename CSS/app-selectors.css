@@ -1,0 +1,47 @@
+* {
+    /* universal selector - select everything */
+    /* muda absolutamente tudo, não é bom */
+    /* color: pink;
+    background-color: aliceblue; */
+}
+
+button{
+    /* selecione todos os elementos de um componente */
+    background-color: #2a9d8f;
+    font-size: 20px;
+}
+
+h1, h2, p {
+    /* selecione multiplos elementos para alterá-los igualmente */
+    color: white;
+}
+
+body{
+    background-color: #264653;
+}
+
+a{
+    color: gray;
+}
+
+#login,#signup{
+    /* ID selector, seleciona pelo ID  */
+    /* Sintaxe: #id */
+    /* um ID de elemento não deve se repetir nenhuma vez em uma página HTML */
+    background-color: #264653;
+    color: white;
+}
+
+.title{
+    /* class selector */
+    /* Sintaxe: .class */
+    /* você pode criar uma classe com muitos elementos com a mesma função e alterar todos dessa maneira */
+    color: white;
+    text-decoration: white none;
+}
+
+.tag{
+    background-color: #e63946;
+    color: #264653;
+    font-size: 16px;
+}
