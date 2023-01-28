@@ -1,0 +1,38 @@
+
+h1{
+    color: rgb(255, 255, 255);
+    text-align: center; 
+    /* alinha o texto horizontalmente */
+    font-weight: 100;
+    /* o quão escura vai ser a fonte */
+    text-decoration: gray wavy line-through;
+    /* varias caracteristicas decorativas sobre a fonte podem ser executadas como itálico, underline, 
+    overline etc. também é possível adicionar adjetivos a caracteristica que queremos adicionar */
+    letter-spacing: 10px;
+    /* espaçamento horizontal entre letras */
+    font-size: 80px;
+    /* tamanho da fonte */
+    font-family: 'Segoe UI', 'Futura', 'Arial', 'Papyrus';
+    /* computador vai procurar pela primeira, se não houver, vai procurar a segunda, e por aí vai */
+    /* também é possível entrar com uma familia de fontes com várias opções */
+}
+
+h2{
+    color: #8a2be2;
+}
+
+p{
+    color: white;
+    text-align: left;
+    line-height: 1.5;
+    /* a distância vertical de uma linha pra outra */
+}
+
+button{
+    background-color: darkred;
+    color: white;
+}
+
+body{
+    background-color: black;
+}

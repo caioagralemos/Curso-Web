@@ -1,0 +1,28 @@
+/* em CSS é necessário utilizar o ponto e virgula no fim de uma declaração */
+
+h1{
+    /* color: purple; */
+    /* a propriedade color pode ser determinada por várias maneiras */
+    /* por nome temos 140 cores (named colors) mas o sistema de RGB Colors também está disponível*/
+    /* sintaxe: rgb(red, green,blue) numa escala de 0 a 255 */
+    color: rgb(247, 0, 247);
+    text-align: center;
+}
+
+h2{
+    /* também é possível utilizar o sistema hexadecimal */
+    color: #8a2be2;
+}
+
+p{
+    color: white;
+    background: black;
+}
+
+button{
+    background-color: darkred;
+    color: white;
+}
+
+body{
+}
