@@ -1,0 +1,15 @@
+h1{
+    background-color: palegoldenrod;
+    border: 1px solid black;
+    display: inline;
+    /* o H1 tem uma propriedade de não ser inline, o que significa que ele por si só ocupa uma linha toda */
+    /* a função display: inline; faz com que o H1 desenvolva essa propriedade. o span, por sua vez, por ser
+    um texto avulso, já tem essa propriedade nativa */
+    /* porém, se um elemento ganha essa propriedade, ele não tem mais uma box só pra ele, e elementos como
+    width ou height não funcionam mais */
+}
+
+span{
+    background-color: palegoldenrod;
+    border: 1px solid black;
+}
