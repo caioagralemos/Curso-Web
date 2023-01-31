@@ -1,0 +1,37 @@
+.circle{
+    width: 300px;
+    height: 300px;
+    background-color: magenta;
+    /* geral: transition: 0.4s; */
+    transition: background-color 0.4s 1s, border-radius 0.5s; 
+    /* transition: elemento (tempo-de-animacao) (delay), elemento2 */
+}
+
+.circle:hover{
+    background-color: aquamarine;
+    border-radius: 250px;
+}
+
+section div{
+    height: 100px;
+    width: 100px;
+    background-color: cadetblue;
+    border: 1px black solid;
+    margin: 20px 0;
+    transition: margin-left 3s;
+}
+
+section:hover div{
+    margin-left: 500px;
+    transition-timing-function: ease-in;
+}
+
+div:nth-of-type(1){
+    transition-timing-function: ease-out;
+}
+
+div:nth-of-type(2){
+    transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+/* note que apesar de muito diferentes, todos chegam no mesmo momento */

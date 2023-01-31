@@ -20,3 +20,11 @@ section{
     background-color: yellow;
     opacity: 0.3;
 }
+
+article h1{
+    font-family: Roboto, sans-serif;
+}
+
+article p{
+    font-family: Montserrat, sans-serif;
+}
