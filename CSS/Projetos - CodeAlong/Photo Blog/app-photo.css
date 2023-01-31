@@ -1,0 +1,23 @@
+body{
+    background-image: url(https://images.unsplash.com/photo-1615800098799-0ccb261b1f92?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1010&q=80);
+    background-size: cover;
+}
+img{
+    width: 20%;
+    height: 20%;
+    margin: 25px;
+    margin-left: 120px;
+}
+nav{
+    font-family: Raleway, sans-serif;
+    font-size: 30px;
+    text-transform: uppercase;
+    border-bottom: 2px solid #000000;
+    width: 30%;
+    padding: 10px;
+    transition: 0.5s;
+}
+nav:active{
+    transform: skewX(30deg);
+    transition-timing-function: ease-in;
+}

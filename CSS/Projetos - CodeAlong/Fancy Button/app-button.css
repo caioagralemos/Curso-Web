@@ -24,3 +24,8 @@ button:hover{
     border: 5px greenyellow solid;
     box-shadow: 1px 2px green;
 }
+button:active{
+    color: darkolivegreen;
+    border: 5px darkgreen solid;
+    transition: 0.2s;
+}
