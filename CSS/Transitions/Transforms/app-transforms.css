@@ -1,0 +1,46 @@
+div{
+    font-family: SF Pro;
+    color: white;
+    height: 100px;
+    width: 100px;
+    border: 2px black solid;
+    border-radius: 25px;
+    text-align: center;
+    padding: 5px;
+    margin: 10px 0;
+    background-color: blue;
+}
+
+#um{
+    transform: rotate(120deg);
+    /* em rotate, também temos rotateX e rotateY que dao aspectos 3d */
+}
+
+#um:hover{
+    transform: rotate(0deg);
+}
+
+#um:active{
+    background-color: brown;
+    transform: scale(1, 0.5);
+    /* scale(x, y) numeros em referencia ao tamanho atual */
+    transition: 1s;
+}
+
+#dois{
+    transform: translate(100px, -100px);
+    /* translate move um elemento pela pagina (x,y)
+    também é possivel usar translateX e translateY */
+}
+
+#dois:hover{
+    transform: translate(0px, 0px);
+    transition: 1s;
+    transition-timing-function: ease-out 1s;
+}
+
+#dois:active{
+    background-color: darkgreen;
+    transform: skew(10deg, 20deg);
+    /* skew estica o objeto */
+}
