@@ -1,15 +1,32 @@
+/* Inline: Width e Height são ignorados. Margem e Padding funcionam apenas horizontalmente. */
+/* Block: Quebra o fluxo de um documento. Width, Height, Margin e Padding são respeitados. */
+/* Inline-Block: Funciona com um Inline, mas Width, Height, Margin e Padding são respeitados. */
+/* NONE: o elemento continuará na página, mas não aparecerá para o usuário. */
+
 h1{
     background-color: palegoldenrod;
     border: 1px solid black;
     display: inline;
-    /* o H1 tem uma propriedade de não ser inline, o que significa que ele por si só ocupa uma linha toda */
+    /* o H1 tem uma propriedade de block, o que significa que ele por si só ocupa uma linha toda */
     /* a função display: inline; faz com que o H1 desenvolva essa propriedade. o span, por sua vez, por ser
-    um texto avulso, já tem essa propriedade nativa */
+    um inline, já tem essa propriedade nativa */
     /* porém, se um elemento ganha essa propriedade, ele não tem mais uma box só pra ele, e elementos como
     width ou height não funcionam mais */
+}
+
+body{
+    font-size: 20px;
 }
 
 span{
     background-color: palegoldenrod;
     border: 1px solid black;
+    font-size: 2em;
+    /* EM é uma unidade relativa em que 1em iguala o tamanho da fonte ao tamanho da fonte
+    do elemento pai e 2em seria o dobro do tamanho. Isso serve para manter a proporção das
+    coisas no caso de que a página seja alterada */
+    /* REM faz a mesma coisa, mas sem a propriedade de nest. exemplo:
+    em uma lista de ul, se usarmos o em, e tivermos uma lista dentro de uma lista dentro de uma lista,
+    o primeiro ul vai pegar a fonte e multiplicar por 2, o segundo vai pegar o resultado do primeiro, 
+    e por aí vai. com REM, esse efeito de nest não funciona, é sempre relativo a ROOT ELEMENT (REm). */
 }

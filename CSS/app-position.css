@@ -1,0 +1,40 @@
+div{
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    border: 2px solid blue;
+    margin: 10px;
+    display: inline-block;
+}
+
+#middle{
+    background-color: aquamarine;
+}
+
+#static #middle{
+    position: static;
+    /* static não muda nada */
+}
+
+#relative #middle{
+    position: relative;
+    /* agora posso usar top, bottom, left e right pra dar offset no meu elemento */
+    top: 40px;
+    left: 25px;
+}
+
+#absolute #middle{
+    position: absolute;
+    /* agora esse elemento não ocupa espaço no documento. é como se trouxesse ele totalmente pra cima
+    no photoshop e ignorasse qualquer flow que existe no documento */
+    /* o segundo bloco vermelho está embaixo do bloco */
+    left: 50px;
+    /* você vai notar que tem algo estranho a mexer com esse bloco, mas é por que a posição dele, quando
+    alterada, é relativa ao início do elemento pai */
+}
+
+#fixed #middle{
+    position: fixed;
+    top: 0;
+    left: 0;
+}

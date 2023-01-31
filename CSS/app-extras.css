@@ -1,0 +1,22 @@
+section{
+    width: 500px;
+    height: 500px;
+    background-color: magenta;
+}
+
+#rgba{
+    width: 50%;
+    height: 50%;
+    background-color: rgba(255, 255, 255, 0.7); 
+    /* r,g,b, alpha = opacidade (0 a 1) */
+    padding: 5px;
+}
+
+/* RGBA ou Opacity, rgba é utilizado como uma cor e opacity altera tudo que tem no bloco */
+
+#opacity{
+    width: 50%;
+    height: 50%;
+    background-color: yellow;
+    opacity: 0.3;
+}
