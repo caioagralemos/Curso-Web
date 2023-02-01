@@ -1,0 +1,77 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+h1 {
+    font-size: 6em;
+    text-align: center;
+}
+nav {
+    font-size: 1.5em;
+}
+
+ul,li {
+    display: inline;
+    margin: 0;
+    padding: 0;
+}
+
+
+@media (min-width: 800px){
+    /* @media é como um if media(min-width = 800) */
+    /* min-width = tudo que for maior que isso */
+    /* é possível encadear min-widths */
+    h1{
+        color: white;
+        background-color: black;
+    }
+}
+
+@media (max-width: 751px){
+    /* max-width = tudo que for menor do que isso */
+    h1{
+       font-size: 4em;
+    }
+    nav{
+        font-size: 1em;
+    }
+}
+@media (max-width: 454px){
+    /* max-width = tudo que for menor do que isso */
+    h1{
+       font-size: 3em;
+    }
+    nav{
+        font-size: 0.9em;
+    }
+}
+
+@media (max-width: 350px){
+    /* max-width = tudo que for menor do que isso */
+    ul{
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+nav{
+    display: flex;
+    justify-content: space-between;
+}
+
+ul{
+    font-family: SF Pro;
+    border: 1px black solid;
+    flex-grow: 1;
+    max-width: 50%;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    background-color: rgba(0, 0, 0, 0.132);
+    border-radius: 10px;
+}
+/* @media (orientation: landscape){
+    body{
+        background-color: magenta;
+    }
+} */

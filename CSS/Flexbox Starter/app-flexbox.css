@@ -1,0 +1,45 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+h1 {
+    text-align: center;
+}
+#container {
+    background-color: #003049;
+    width: 90%;
+    height: 120px;
+    margin: 0 auto;
+    border: 5px solid #003049;
+    display: flex; /* ativa o flexbox */
+    flex-direction: row; /* altera a direção da coluna. pode ser column, column-reverse, row ou row-reverse */
+    justify-content: center; /* funciona como um align horizontal de conteiner div */
+    align-items: top; /* funciona como um align vertical de conteiner div */
+    flex-wrap: unwrap; /* propriedade que preserva os axis dos elementos, e se necessário, cria colunas/linhas para organizar */
+    align-content: center; /* propriedade de wrap que junta todos os elementos em um local passado por argumento */
+}
+
+#container div{
+    width: 120px;
+    height: 120px;
+    text-align: center;
+    flex-basis: 150px; /* define o espaço inicial de um elemento antes que mais espaço seja distribuido */
+}
+
+div:nth-of-type(3){
+    align-self: unset; /* como um align-itens, mas específico */
+    flex-shrink: 3; /* como um flex-grow, mas quando a página for minimizada ele vai diminuir mais rapido dependendo do valor passado */
+}
+
+div:nth-of-type(1){
+    flex-grow: 1; /* faz com que todo o espaço sobrando seja consumido por esse item ou mais itens com essa propriedade */
+}
+
+div:nth-of-type(5){
+    flex-grow: 3; /* esse toma 3x do tamanho dos outros que também tem essa propriedade */
+}
+
+/* existe um elemento flex
+flex: flex-grow (unitless)
+flex: flex-basis(width/height)
+flex: lex-grow (unitless) / flex-basis(width/height) | flex-basis
+flex: flex-grow | flex-shrink | flex-basis */
