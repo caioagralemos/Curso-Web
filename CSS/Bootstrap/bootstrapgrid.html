@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Grids</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <section class="container">
+
+        <h1 class="display-6 p-3">Grids</h1>
+        <p>
+            Grids são maneiras de organizar a página em blocos. cada unidade da página possui exatamente 12 blocos
+        <div class="row text-center">
+            <div class="col-2 bg-success">2u</div>
+            <div class="col-8 bg-danger">8u</div>
+            <div class="col-2 bg-success">2u</div>
+        </div>
+        <div class="row text-center">
+            <div class="col-3 bg-info">3u</div>
+            <div class="col-6 bg-warning">6u</div>
+            <div class="col-3 bg-info">3u</div>
+        </div>
+        <div class="row text-center">
+            <div class="col bg-primary">autosized</div>
+            <div class="col-10 bg-secondary">10u</div>
+            <div class="col bg-primary">autosized</div>
+        </div>
+        </div>
+        </p>
+
+        <h1 class="display-6 p-3">Grid Responsivo</h1>
+        <div class="row align-items-start">
+            <!-- align-itens-start -->
+            <h1 class="display-6 fs-3">Textos</h1>
+            <div class="col-md-6 col-xl-3 bg-info-subtle">
+                <!-- esses parametros na classe funcionam como um @media min-width -->
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam cum voluptates ex deleniti corporis
+                deserunt libero optio debitis dolorem, nisi quod fugit animi laborum adipisci ad minus consequatur ab
+                ut?
+                Cum officia, reiciendis possimus provident asperiores quos deserunt perspiciatis ad ipsam dolor fuga
+                eaque consequuntur reprehenderit maxime alias distinctio voluptate nam ut? Consequatur, rerum! Est animi
+                tempore illo nulla reprehenderit!
+                <br><br>
+            </div>
+            <div class="col-md-6 col-xl-3 bg-success-subtle">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam cum voluptates ex deleniti corporis
+                deserunt libero optio debitis dolorem, nisi quod fugit animi laborum adipisci ad minus consequatur ab
+                ut?
+                Cum officia, reiciendis possimus provident asperiores quos deserunt perspiciatis ad ipsam dolor fuga
+                eaque consequuntur reprehenderit maxime alias distinctio voluptate nam ut? Consequatur, rerum! Est animi
+                tempore illo nulla reprehenderit!
+            </div>
+            <div class="col-md-6 col-xl-3 bg-info-subtle">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam cum voluptates ex deleniti corporis
+                deserunt libero optio debitis dolorem, nisi quod fugit animi laborum adipisci ad minus consequatur ab
+                ut?
+                Cum officia, reiciendis possimus provident asperiores quos deserunt perspiciatis ad ipsam dolor fuga
+                eaque consequuntur reprehenderit maxime alias distinctio voluptate nam ut? Consequatur, rerum! Est animi
+                tempore illo nulla reprehenderit!
+                Eum quod quidem eos delectus nam repudiandae ut enim ea aliquam repellat reiciendis sit nisi iusto,
+                totam reprehenderit minus earum commodi! Aliquam tempora corporis quisquam deserunt inventore aut.
+                Perferendis, sed?
+                <br><br>
+            </div>
+            <div class="col-md-6 col-xl-3 bg-success-subtle">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam cum voluptates ex deleniti corporis
+                deserunt libero optio debitis dolorem, nisi quod fugit animi laborum adipisci ad minus consequatur ab
+                ut?
+                Cum officia, reiciendis possimus provident asperiores quos deserunt perspiciatis ad ipsam dolor fuga
+                eaque consequuntur reprehenderit maxime alias distinctio voluptate nam ut? Consequatur, rerum! Est animi
+                tempore illo nulla reprehenderit!
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- g-0 na classe remove o espaçamento -->
+            <h1 class="display-6 fs-3">Cidades</h1>
+            <p>
+
+            <div class="col-md-4 col-sm-12">
+                <img src="https://images.unsplash.com/photo-1583422409516-2895a77efded?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
+                    alt="" class="img-fluid">
+            </div>
+            <div class="col-md-4 col-sm-12">
+                <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1746&q=80"
+                    alt="" class="img-fluid">
+            </div>
+            <div class="col-md-4 col-sm-12">
+                <img src="https://images.unsplash.com/photo-1535063406830-27dfae54262a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
+                    alt="" class="img-fluid">
+            </div>
+            </p>
+        </div>
+
+        <h1 class="display-6 p-3">Justify Content</h1>
+        <div class="row justify-content-md-start justify-content-sm-center">
+            <div class="col-4 bg-info"> START Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente recusandae dolorem quia aliquam enim alias similique sunt corrupti unde esse beatae iure ipsum amet soluta quae consequuntur ipsa, quas quisquam!</div>
+            <div class="col-4 bg-danger"> START Lorem ipsum dolor, sit amet consectetur adipisicing elit. Esse, nemo. Minima accusamus ad autem placeat architecto voluptates consectetur tenetur perspiciatis. Consectetur ea cupiditate dolore error quod nobis accusantium nesciunt vel!</div>
+            </div>
+        <div class="row justify-content-md-center justify-content-sm-center">
+            <div class="col-4 bg-info">CENTER Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente recusandae dolorem quia aliquam enim alias similique sunt corrupti unde esse beatae iure ipsum amet soluta quae consequuntur ipsa, quas quisquam!</div>
+            <div class="col-4 bg-danger">CENTER Lorem ipsum dolor, sit amet consectetur adipisicing elit. Esse, nemo. Minima accusamus ad autem placeat architecto voluptates consectetur tenetur perspiciatis. Consectetur ea cupiditate dolore error quod nobis accusantium nesciunt vel!</div>
+            </div>
+        <div class="row justify-content-md-end justify-content-sm-center">
+            <div class="col-4 bg-info">END Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente recusandae dolorem quia aliquam enim alias similique sunt corrupti unde esse beatae iure ipsum amet soluta quae consequuntur ipsa, quas quisquam!</div>
+            <div class="col-4 bg-danger">END Lorem ipsum dolor, sit amet consectetur adipisicing elit. Esse, nemo. Minima accusamus ad autem placeat architecto voluptates consectetur tenetur perspiciatis. Consectetur ea cupiditate dolore error quod nobis accusantium nesciunt vel!</div>
+            </div>
+
+
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+            crossorigin="anonymous"></script>
+    </section>
+</body>
+
+</html>
