@@ -63,3 +63,12 @@ h2{
 .isle{
     margin-bottom: 100px;
 }
+
+.isle:nth-of-type(4){
+    margin-bottom: 0px;
+}
+
+.navbar.scrolled{
+    background-color: rgba(222, 192, 222, 0.735);
+    transition: 200ms;
+}
