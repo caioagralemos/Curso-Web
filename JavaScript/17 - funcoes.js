@@ -39,3 +39,26 @@ function avg (a,b,c,d){
         return false
     }
 }
+
+// outra maneira de definir funções
+
+const subtract = function (x,y){
+    return x - y
+}
+subtract(10,5)
+
+// função que chama outra função
+
+function chameDeNovo(func){
+    func()
+    func()
+}
+chameDeNovo(singSong)
+
+// função que retorna outra função
+
+function makeBetweenFunc(min, max){
+    return function(num){
+        return num >= min && num <= max
+    }
+}
