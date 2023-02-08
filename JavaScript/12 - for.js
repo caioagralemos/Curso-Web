@@ -11,34 +11,34 @@
 //     console.log(i)
 // }
 
-for (let i = 100; i >= 0; i-= 10){
+for (let i = 100; i >= 0; i -= 10) {
     console.log(i)
 }
 
 // looping over arrays
 
 meuarray = ["Arthur",
-            "Bruno",
-            "Caio",
-            "Davi",
-            "Everaldo",
-            "Fábio",
-            "Geraldo",
-            "Higor",
-            "James",
-            "Kaleb",
-            "Lucas",
-            "Mano",
-            "Nolan"]
-    
-for (let i = 0; i < meuarray.length; i++){
+    "Bruno",
+    "Caio",
+    "Davi",
+    "Everaldo",
+    "Fábio",
+    "Geraldo",
+    "Higor",
+    "James",
+    "Kaleb",
+    "Lucas",
+    "Mano",
+    "Nolan"]
+
+for (let i = 0; i < meuarray.length; i++) {
     console.log(i, meuarray[i])
 }
 
 // nested loops
 
-for (let i = 3; i > 0; i--){
-    for (let j = -3; j < 0; j++){
+for (let i = 3; i > 0; i--) {
+    for (let j = -3; j < 0; j++) {
         console.log(`i ${i} j ${j}`)
     }
 }

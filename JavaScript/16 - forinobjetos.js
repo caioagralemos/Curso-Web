@@ -25,14 +25,14 @@ Object.keys(pontos)
 Object.values(pontos)
 
 let total = 0
-for (let point of Object.values(pontos)){
+for (let point of Object.values(pontos)) {
     // aqui usamos of pois isso é tratado como um array
     total += point
 }
-console.log(total/13)
+console.log(total / 13)
 
-for (let person in pontos){
-    if (pontos[person] > (total/13)){
+for (let person in pontos) {
+    if (pontos[person] > (total / 13)) {
         console.log(`${person} está acima da média!`)
     }
-    }
+}

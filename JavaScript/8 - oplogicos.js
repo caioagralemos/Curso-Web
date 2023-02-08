@@ -14,19 +14,19 @@ NaN
 
 const nome = ""
 
-if(nome){
+if (nome) {
     console.log("True")
 }
-else{
+else {
     console.log("False")
 }
 
 // vai retornar false
 
-if(1243023){
+if (1243023) {
     console.log("True")
 }
-else{
+else {
     console.log("False")
 }
 

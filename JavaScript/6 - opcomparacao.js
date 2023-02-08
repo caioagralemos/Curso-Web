@@ -15,7 +15,7 @@
 // igualdade
 1 == '1' // true
 null == undefined // true
-0  == "" // true
+0 == "" // true
 
 // diferença
 1 != 3 // true
@@ -23,7 +23,7 @@ null == undefined // true
 // strict equality
 1 === '1' // false
 null === undefined // false
-0  === "" // false
+0 === "" // false
 
 
 // strict unequality

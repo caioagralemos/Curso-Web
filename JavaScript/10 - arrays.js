@@ -31,21 +31,21 @@ meuarray.includes('caio') // retorna um bool dependendo se nosso array contém o
 meuarray.indexOf('lucas') // retorna o index do argumento passado no array (-1 se não houver)
 meuarray.reverse() // reverte o array
 meuarray.slice(2) // retorna um array dos elementos depois do elemento com index 2
-meuarray.slice(2,5) // retorna um array dos elementos entre 2 e 5 (não inclui 5)
+meuarray.slice(2, 5) // retorna um array dos elementos entre 2 e 5 (não inclui 5)
 meuarray.splice(1, 0, "giulio") // adiciona ou substitui um elemento (index, quantidade de elementos a serem substituidos, elemento)  
 
 // igualdade entre arrays ----
 // arrays são referenciadas como códigos de memória individuais independente dos elementos que tiverem dentro
 // isso traz algumas propriedades curiosas
 
-['a','b','c'] == ['a','b','c'] // false
-['a','b','c'] === ['a','b','c'] // false
+['a', 'b', 'c'] == ['a', 'b', 'c'] // false
+    ['a', 'b', 'c'] === ['a', 'b', 'c'] // false
 
 let meuarrayCopia = meuarray // qualquer alteração que eu fizer em qualquer um desses dois vai mudar os dois
-const meuterceiroarray = [1,2,3,4]
+const meuterceiroarray = [1, 2, 3, 4]
 meuterceiroarray.push(5) // é possível alterar arrays constantes desde que o valor de referência se mantenha o mesmo (por isso, é comum que arrays sejam const)
 // meuterceiroarray = ["azul", "amarelo"] // erro! 
 
 // arrays concatenados
-let arraydeArrays = [[1,2,3], ['a', 'b', 'c'], 34, ["nome", "nome2", "nome3"]]
+let arraydeArrays = [[1, 2, 3], ['a', 'b', 'c'], 34, ["nome", "nome2", "nome3"]]
 arraydeArrays[3][0] // "nome" 

@@ -42,7 +42,7 @@ senha.indexOf('!') // 16
 // metodo slice (.slice(beginIndex, endIndex))
 senha.slice(3) // doistresquatro!
 // endIndex é opcional e é uma index a mais do que o último que você quer
-senha.slice(3,8) // dois
+senha.slice(3, 8) // dois
 // também é possível utilizar indices negativos
 senha.slice(-7) // quatro!
 

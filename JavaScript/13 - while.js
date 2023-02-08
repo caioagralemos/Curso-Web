@@ -11,9 +11,9 @@
 // alert("você desbloqueou o segredo do baby hippo!")
 
 let input = prompt("Fala comigo bb")
-while(true){
+while (true) {
     input = prompt(input)
-    if (input.toLowerCase() === "pare de me imitar"){
+    if (input.toLowerCase() === "pare de me imitar") {
         break
     }
 }

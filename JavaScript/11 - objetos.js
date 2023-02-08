@@ -4,7 +4,7 @@ const Pessoa = {
     age: 18,
     nationality: ["Brazil", "Northeast", "Alagoas", "Maceió"],
     alive: true,
-    grades : {
+    grades: {
         // objeto dentro de objeto
         ga: 9,
         ed: 10,
