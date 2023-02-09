@@ -22,7 +22,7 @@ const rollDie = (sides = 6) => {
     return Math.floor((Math.random() * sides) + 1) 
 }
 
-const greet =  (person, msg = "Olá"){
+const greet =  (person, msg = "Olá") => {
     // sempre que for definir um valor default, coloque ele na(s) últimas posições, pois a ordem continua importando
     return `${msg}, ${person}!`
 }
