@@ -88,3 +88,16 @@ numbers.every(num => (
 ))
 
 // MÉTODO REDUCE - executa uma função em cada elemento do array até fazer o array ter um só elemento
+
+const prices = [9.99, 1.99, 2.50, 99.99, 199.99, 69.99, 12.50]
+let total = 0
+let totalPrices = prices.reduce ((total, price) => {
+    return total + price
+})
+let small = 199
+let smallestPrice = prices.reduce ((small, price) => {
+    if (price < small){
+        return price
+    }
+    return small
+})

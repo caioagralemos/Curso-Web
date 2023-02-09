@@ -26,3 +26,5 @@ const multiply = (x, y) => (
 
 // segundo método - uma linha só (funções muito simples)
 const isEven = (a) => a % 2 == 0
+
+// NÃO É POSSÍVEL UTILIZAR ARROW FUNCTIONS COM FUNÇÕES QUE SE AUTOREFERENCIAM EM OBJETOS (KEYWORD THIS)
