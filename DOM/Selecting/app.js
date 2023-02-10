@@ -9,3 +9,10 @@ const links = document.querySelectorAll('p a');
 for (let link of links) {
     console.log(link.href)
 }
+
+let cont = document.querySelector("body")
+cont.style.textAlign
+cont.style.borderRadius
+
+let image = document.querySelector("img")
+image.style.col
