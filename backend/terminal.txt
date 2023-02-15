@@ -1,0 +1,14 @@
+- ls - lista os conteúdos da pasta atual
+- pwd - retorna o diretório atual
+- cd - volta pra home
+- cd .. - volta um diretório
+- cd Diretório - vai até um diretório-filho do seu diretório atual
+- cd Users/Diretório/Dir-filho - vai até um diretório absoluto (saindo de qualquer lugar)
+- mkdir Nome - make directory (cria um diretório no seu dir atual)
+- mkdir Pasta1 Pasta2 - cria múltiplos diretórios de uma vez
+- man command - retorna um manual sobre o comando passado por parâmetro
+- touch name.txt - cria um arquivo chamado name.txt
+- touch index.html app.css app.js - cria tudo ao mesmo tempo
+- rm name.txt - exclui um arquivo
+- rmdir - remove um diretório vazio
+- rm -rf - remove um diretório com itens
