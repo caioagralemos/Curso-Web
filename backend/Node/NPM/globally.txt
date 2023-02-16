@@ -1,0 +1,7 @@
+// instalando globalmente (funciona no terminal)
+// npm i -g cowsay
+
+// vinculando com pasta
+// npm link cowsay
+
+(normalmente módulos se usam normalmente)
