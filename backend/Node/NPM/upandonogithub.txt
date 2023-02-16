@@ -1,0 +1,7 @@
+vc vai perceber que todos os arquivos que
+usam node ao serem upados no github não con-
+tem a pasta node-modules. é bom costume, ao fazer
+upload, não incluir a pasta. assim, quando o usuário
+fizer o download do arquivo, basta entrar na 
+pasta e dar um npm install, que ele vai baixar todas
+as dependencies da package do arquivo.
