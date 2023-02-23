@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random</title>
+    <!-- incluindo partials -->
+    <%- include('partials/head') %>
+</head>
+<body>
+    <!-- incluindo partials -->
+    <%- include('partials/navbar') %>
+    <div class="container">
+    <h1>Your random number is = <%= rand%></h1>
+    <% if (rand % 2 === 0) { %>
+     <!-- sintaxe para rodar codigo js sem ser automaticamente renderizado (basta remover o =) -->
+     <h2>Even number!</h2>
+    <% } else { %>
+    <h2>Odd number!</h2>
+    <% } %>
+    </div>
+</body>
+</html>
