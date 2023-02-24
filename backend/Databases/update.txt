@@ -1,0 +1,3 @@
+db.dogs.updateOne({_id: ObjectId("63f93ac32b6bd24e1472e3a3")}, {$set: {name: "Piggy"}}) // replacing field
+db.dogs.updateOne({name: "Charlie Brown"}, {$set: {color: "black"}}) // add field that doesnt exist
+db.dogs.updateMany({breed: "bulldog"}, {$set: {color: "black"}})

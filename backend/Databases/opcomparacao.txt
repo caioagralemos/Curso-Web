@@ -1,0 +1,10 @@
+$eq - equal to
+$gt - greater than
+$gte - greater or equal
+$in - in
+$lt - less than
+$lte - less or equal
+$and - and
+$not - not
+$or - or
+$nin - not in

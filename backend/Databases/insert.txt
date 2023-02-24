@@ -1,0 +1,11 @@
+use animalShelter // escolhe o BD, se não houver, cria
+show collections // mostra as coleções disponiveis no bd
+db.dogs.insertOne({name: "Charlie Brown", age: 3, breed: "corgi", catFriendly: true}) // insere o json passado por parâmetro em uma coleção, se não houver, cria a coleção
+db.dogs.find() // printa todas as instâncias em uma coleção
+db.dogs.insertMany([{name: "Bali", age: 2, breed: "bulldog", catFriendly: true}, {name: "Britney Priscila", age: 2, breed: "Chihuahua", catFriendly: false}]) // insere multiplos
+db.cats.insert({name: "Marcella", age: 7, breed: "Scottish Fold", dogFriendly: false}) // inserindo em outra coleção
+
+db.dogs.insertMany([{name: "Mago", age: 2, breed: "Pug", weight: 10, size: "M", personality: { dogFriendly: true, catFriendly: true }},
+{name: "Break", age: 12, breed: "Chihuahua", weight: 4, size: "S", personality: { dogFriendly: false, catFriendly: false }},
+{name: "Molo", age: 1, breed: "Labrador", weight: 23, size: "G", personality: { dogFriendly: false, catFriendly: true }},
+{name: "Luiza", age: 6, breed: "Husky", weight: 20, size: "G", personality: { dogFriendly: true, catFriendly: false }}])

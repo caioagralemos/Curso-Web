@@ -1,0 +1,7 @@
+db.dogs.find() // retorna todas as instâncias na coleção dogs
+db.dogs.find({breed: "corgi"}) // retorna todas as instâncias na coleção dogs onde breed = corgi
+db.dogs.findOne({catFriendly: true}) // retorna a primeira instância onde catFriendly = true
+db.dogs.find({"personality.dogFriendly": true})
+db.dogs.find({age: {$lt: 3}}) // com idade menor que 3
+db.dogs.find({breed: {$in: ['Pug', 'Boxer']}}) // pugs ou boxers
+db.dogs.find({breed: {$in: ['Pug', 'Boxer']}, age: {$lt: 3}}) // pugs ou boxers com idade menor que 3

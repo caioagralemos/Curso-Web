@@ -1,0 +1,2 @@
+db.dogs.deleteOne({name: "Piggy"})
+db.dogs.deleteMany({color: "black"})
