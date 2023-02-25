@@ -1,0 +1,6 @@
+// start
+brew services start mongodb-community
+mongosh
+
+// end
+brew services stop mongodb-community
