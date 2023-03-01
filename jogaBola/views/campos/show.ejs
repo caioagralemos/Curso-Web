@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes sobre <%= essecampo.titulo %>
+    </title>
+</head>
+
+<body>
+    <h1>
+        <%= essecampo.titulo %>
+    </h1>
+    <h2>
+        <%= essecampo.local %>
+    </h2>
+    <div>
+        Descrição: <%= essecampo.descricao %><br>
+            Preço: <%= essecampo.preco %>
+    </div>
+    <p>
+    <form action="/campos/<%= essecampo._id %>?_method=DELETE" method="POST">
+        <button>Deletar campo</button>
+    </form>
+    </p>
+
+    <footer>
+        <a href="/campos/<%= essecampo._id %>/edit">Editar Campo</a><br>
+        <a href="/campos">Todos os Campos</a>
+    </footer>
+</body>
+
+</html>

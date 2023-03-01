@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Campo</title>
+</head>
+<body>
+    <h1>Editar Campo</h1>
+
+    <form action="/campos/<%= essecampo._id %>?_method=PUT" method="POST">
+        <div>
+            <label for="titulo">Nome do campo: </label>
+            <input type="text" id="title" name="campo[titulo]" placeholder="ex: Arena Ronaldinho" value="<%= essecampo.titulo %>">
+        </div>
+        <div>
+            <label for="local">Cidade:</label>
+            <input type="text" id="local" name="campo[local]" placeholder="ex: Maceió" value="<%= essecampo.local %>">
+        </div>
+        <div>
+            <label for="preco">Preço por hora: </label>
+            <input type="text" id="preco" name="campo[preco]" placeholder="ex: R$ 250 / Hora" value="<%= essecampo.preco %>">
+        </div>
+        <div>
+            <label for="descricao"></label>
+            <textarea id="descricao" name="campo[descricao]" rows="4" cols="50" placeholder="ex: campo society na beira da lagoa"><%= essecampo.descricao %></textarea>
+        </div>
+        <button>Enviar</button>
+    </form>
+
+    <br>
+    <a href="/campos/<%= essecampo._id %>">Voltar a página de <%= essecampo.titulo %></a>
+</body>
+</html>
