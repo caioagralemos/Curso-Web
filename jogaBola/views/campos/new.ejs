@@ -1,28 +1,37 @@
 <% layout('layouts/boilerplate') %>
-    <h1>Novo Campo</h1>
+    <h1 class="mb-3">Novo Campo</h1>
 
     <form action="/campos" method="POST">
-        <p>
-            <label for="titulo">Nome do campo: </label>
-            <input type="text" id="title" name="campo[titulo]" placeholder="ex: Arena Ronaldinho">
-        </p>
-        <p>
-            <label for="local">Cidade:</label>
-            <input type="text" id="local" name="campo[local]" placeholder="ex: Maceió">
-        </p>
-        <p>
-            <label for="preco">Preço por hora: </label>
-            <input type="text" id="preco" name="campo[preco]" placeholder="ex: R$ 250 / Hora">
-        </p>
-        <p>
-            <label for="descricao" class="mb-2">Descrição: </label><br>
-            <textarea id="descricao" name="campo[descricao]" rows="4" cols="50"
+        <div class="mb-3">
+            <label class="form-label" for="titulo">Nome do campo</label>
+            <input class="form-control" type="text" id="titulo" name="campo[titulo]" placeholder="ex: Arena Ronaldinho">
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="local">Cidade</label>
+            <input class="form-control" type="text" id="local" name="campo[local]" placeholder="ex: Maceió">
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="preco">Preço por hora</label>
+            <div class="input-group">
+                <span class="input-group-text" id="basic-addon1">R$</span>
+                <input class="form-control" type="number" id="preco" name="campo[preco]" placeholder="ex: 250"
+                    aria-describedby="price-label">
+            </div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="imagem">Link da Imagem (se não houver imagem, não mexa)</label>
+            <input class="form-control" type="text" id="imagem" name="campo[imagem]" placeholder="ex: Maceió"
+                value="https://source.unsplash.com/collection/9600273">
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="descricao" class="mb-2">Descrição</label><br>
+            <textarea class="form-control" id="descricao" name="campo[descricao]" rows="4" cols="50"
                 placeholder="ex: campo society na beira da lagoa"></textarea>
-        </p>
-        <p>
-            <button type="button" class="btn btn-outline-secondary">Enviar</button>
-        </p>
+        </div>
+        <div class="mb-3">
+            <button class="btn btn-outline-success">Enviar</button>
+        </div>
     </form>
 
     <br>
-    <a href="/campos">Todos os Campos</a>
+    <a class="btn btn-success mb-4" href="/campos">Todos os Campos</a>

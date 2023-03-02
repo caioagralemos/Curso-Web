@@ -1,21 +1,20 @@
 <% layout('layouts/boilerplate') %>
-    <h1>
-        <%= essecampo.titulo %>
-    </h1>
-    <h2>
-        <%= essecampo.local %>
-    </h2>
-    <div>
-        Descrição: <%= essecampo.descricao %><br>
-            Preço: <%= essecampo.preco %>
-    </div>
-    <p>
-    <form action="/campos/<%= essecampo._id %>?_method=DELETE" method="POST">
-        <button type="button" class="btn btn-outline-secondary">Deletar campo</button>
-    </form>
-    </p>
 
-    <footer>
-        <a href="/campos/<%= essecampo._id %>/edit">Editar Campo</a><br>
-        <a href="/campos">Todos os Campos</a>
-    </footer>
+<div class="row">
+    <div class="col-6 offset-3">
+        <div class="card mb-3">
+            <img src="<%= essecampo.imagem %>" class="card-img-top" alt="imagem do campo">
+            <div class="card-body">
+                <h5 class="card-title"><%= essecampo.titulo %></h5>
+                <p class="card-text"><small class="text-muted"><%= essecampo.local %></small></p>
+                <p class="card-text"><%= essecampo.descricao %></p>
+                <hr>
+                <p class="card-text"><h2>Preço: R$ <%= essecampo.preco %> / Hora</h2></p>
+                <hr>
+            <div class="card-body d-flex justify-content-start ps-0">
+                <a class="card-link btn btn-outline-success mb-2 me-2" href="/campos/<%= essecampo._id %>/edit">Editar Campo</a><br>
+                <a class="card-link btn btn-success mb-2" href="/campos">Todos os Campos</a>
+          </div>
+    </div>
+    <div class="card-footer text-muted">editado à 1 dia atrás</div>
+</div>

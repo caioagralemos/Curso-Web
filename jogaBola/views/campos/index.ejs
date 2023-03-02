@@ -6,13 +6,23 @@
         <a href="/campos/new" class="">Adicione um Campo</a>
     </p>
 
-    <ol>
-        <% for(let campo of campos){ %>
-            <li>
-                <a href="campos/<%= campo._id %>">
-                    <%= campo.titulo %>
-                </a> - <%= campo.local %><br>
-                    <%= campo.preco %>
-            </li>
-            <% } %>
-    </ol>
+    <% for(let campo of campos){ %>
+        <div class="card mb-3">
+            <div class="row">
+                <div class="col-md-4">
+                    <img class="img-fluid" alt="" src="<%= campo.imagem %>">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title"><%= campo.titulo %></h5>
+                        <p class="card-text"><%= campo.descricao %></p>
+                        <p class="card-text">
+                            <small class="text-muted"><%= campo.local %></small>
+                        </p>
+                        <a class="btn btn-success" href="/campos/<%= campo._id %>">Saiba mais</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% } %>
+

@@ -1,25 +1,41 @@
 <% layout('layouts/boilerplate') %>
-    <h1>Editar Campo</h1>
+    <h1 class="mb-3">Editar Campo</h1>
 
     <form action="/campos/<%= essecampo._id %>?_method=PUT" method="POST">
-        <p>
-            <label for="titulo">Nome do campo: </label>
-            <input type="text" id="title" name="campo[titulo]" placeholder="ex: Arena Ronaldinho" value="<%= essecampo.titulo %>">
-        </p>
-        <p>
-            <label for="local">Cidade:</label>
-            <input type="text" id="local" name="campo[local]" placeholder="ex: Maceió" value="<%= essecampo.local %>">
-        </p>
-        <p>
-            <label for="preco">Preço por hora: </label>
-            <input type="text" id="preco" name="campo[preco]" placeholder="ex: R$ 250 / Hora" value="<%= essecampo.preco %>">
-        </p>
-        <p>
-            <label for="descricao">Descrição: </label><br>
-            <textarea id="descricao" name="campo[descricao]" rows="4" cols="50" placeholder="ex: campo society na beira da lagoa"><%= essecampo.descricao %></textarea>
-        </p>
-        <button type="button" class="btn btn-outline-secondary">Enviar</button>
-    </form>
+        <form>
+            <div class="mb-3">
+                <label class="form-label" for="titulo">Nome do campo: </label>
+                <input class="form-control" type="text" id="title" name="campo[titulo]" placeholder="ex: Arena Ronaldinho"
+                    value="<%= essecampo.titulo %>">
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="local">Cidade:</label>
+                <input class="form-control" type="text" id="local" name="campo[local]" placeholder="ex: Maceió"
+                    value="<%= essecampo.local %>">
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="preco">Preço por hora</label>
+                <div class="input-group">
+                    <span class="input-group-text" id="basic-addon1">R$</span>
+                    <input class="form-control" type="number" id="preco" name="campo[preco]" placeholder="ex: 250"
+                        aria-describedby="price-label" value="<%= essecampo.preco %>">
+                </div>
+            </div>
+            <div class="mb-3">
+                    <label class="form-label" for="imagem">Link da Imagem (se não houver imagem, não mexa):</label>
+                    <input class="form-control" type="text" id="imagem" name="campo[imagem]" placeholder="ex: Maceió" value="https://source.unsplash.com/collection/9600273">
+            </div>
+            <div class="mb-3"> 
+                <label class="form-label" for="descricao">Descrição: </label><br>
+                <textarea class="form-control" id="descricao" name="campo[descricao]" rows="4" cols="50"
+                    placeholder="ex: campo society na beira da lagoa"><%= essecampo.descricao %></textarea>
+            </div>
+            <button class="btn btn-outline-success mb-2">Enviar</button>
+        </form>
 
-    <br>
-    <a href="/campos/<%= essecampo._id %>">Voltar a página de <%= essecampo.titulo %></a>
+        <form action="/campos/<%= essecampo._id %>?_method=DELETE" method="POST">
+            <button class="btn btn-outline-danger mb-2">Deletar campo</button>
+        </form>
+
+        <br>
+        <a class="btn btn-success mb-4" href="/campos/<%= essecampo._id %>">Voltar a página de <%= essecampo.titulo %></a>
