@@ -27,7 +27,6 @@ mongoose.connect('mongodb://127.0.0.1:27017/shopDB')
     })
 
 app.get("/", async (req, res, next) => {
-    try {
     const {category} = req.query
     if (category) {
         const produtos = await Product.find({category})
@@ -37,9 +36,6 @@ app.get("/", async (req, res, next) => {
         // esse comando será MUITO usado.
         res.render("allproducts.ejs", { produtos, category:"produtos" })
     }
-    } catch (e) {
-        next(e)
-    }
 })
 
 app.get('/products/new', (req, res) => {
@@ -47,54 +43,34 @@ app.get('/products/new', (req, res) => {
 })
 
 app.post('/products', async (req, res) => {
-    try {
     let newProduct = new Product(req.body)
     await newProduct.save()
     console.log(newProduct)
     res.redirect(`/products/${newProduct._id}`)
-    } catch (e) {
-        next(e)
-    }
 })
 
 app.get('/products/:id', async (req, res, next) => {
-    try{
     const { id } = req.params
     const product = await Product.findById(id)
     res.render("details.ejs", { product })
-    } catch(e) {
-        next(e) // qualquer coisa que der errado vai jogar nesse erro
-    }
 })
 
 app.get('/products/:id/edit', async (req, res) => {
-    try {
     const { id } = req.params
     const product = await Product.findById(id)
     res.render('editproduct.ejs', { product, categories })
-    } catch (e) {
-        next(e)
-    }
 })
 
 app.put('/products/:id', async (req, res) => {
-    try {
     const { id } = req.params
     const product = await Product.findByIdAndUpdate(id, req.body, { runValidators: true })
     res.redirect(`/products/${product._id}`)
-    } catch (e) {
-        next(e)
-    }
 })
 
 app.delete('/products/:id', async(req,res) => {
-    try {
     const { id } = req.params
     await Product.findByIdAndDelete(id)
     res.redirect('allproducts.ejs')
-    } catch (e) {
-        next (e)
-    }
 })
 
 app.use((err, req, res, next) => {
