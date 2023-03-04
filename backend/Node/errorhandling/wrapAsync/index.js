@@ -26,7 +26,13 @@ mongoose.connect('mongodb://127.0.0.1:27017/shopDB')
         console.log(`mongo error: ${err}`)
     })
 
-app.get("/", async (req, res, next) => {
+function wrapAsync(fn) {
+    return function(req, res, next){
+        fn(req,res,next).catch(e => next(e))
+    }
+}
+
+app.get("/", wrapAsync(async (req, res, next) => {
     const {category} = req.query
     if (category) {
         const produtos = await Product.find({category})
@@ -36,47 +42,52 @@ app.get("/", async (req, res, next) => {
         // esse comando será MUITO usado.
         res.render("allproducts.ejs", { produtos, category:"produtos" })
     }
-})
+}))
 
 app.get('/products/new', (req, res) => {
     res.render('newproduct.ejs', {categories})
 })
 
-app.post('/products', async (req, res) => {
+app.post('/products', wrapAsync(async (req, res, next) => {
     let newProduct = new Product(req.body)
     await newProduct.save()
     console.log(newProduct)
     res.redirect(`/products/${newProduct._id}`)
-})
+}))
 
-app.get('/products/:id', async (req, res, next) => {
+app.get('/products/:id',wrapAsync(async (req, res, next) => {
     const { id } = req.params
     const product = await Product.findById(id)
     res.render("details.ejs", { product })
-})
+}))
 
-app.get('/products/:id/edit', async (req, res) => {
+app.get('/products/:id/edit',wrapAsync(async (req, res, next) => {
     const { id } = req.params
     const product = await Product.findById(id)
     res.render('editproduct.ejs', { product, categories })
-})
+}))
 
-app.put('/products/:id', async (req, res) => {
+app.put('/products/:id',wrapAsync(async (req, res, next) => {
     const { id } = req.params
     const product = await Product.findByIdAndUpdate(id, req.body, { runValidators: true })
     res.redirect(`/products/${product._id}`)
-})
+}))
 
-app.delete('/products/:id', async(req,res) => {
+app.delete('/products/:id', wrapAsync(async(req,res,next) => {
     const { id } = req.params
     await Product.findByIdAndDelete(id)
     res.redirect('allproducts.ejs')
-})
+}))
+
+const handleValidationError = err => {
+    console.log(err)
+    return new AppError(`Erro na validação do produto: ${err.message}`, 400)
+}
 
 app.use((err, req, res, next) => {
-    const { status = 500 } = err //500 = default value para tratar erros de js
-    const { message = "something went wrong" } =  err
-    res.status(status).send(`- ${status} -\n ${message}`)
+    console.dir(err)
+    if(err.name === 'ValidationError') err = handleValidationError(err)
+    next(err)
 })
 
 

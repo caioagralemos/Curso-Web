@@ -46,7 +46,7 @@ app.get('/products/new', (req, res) => {
     res.render('newproduct.ejs', {categories})
 })
 
-app.post('/products', async (req, res) => {
+app.post('/products', async (req, res, next) => {
     try {
     let newProduct = new Product(req.body)
     await newProduct.save()
@@ -67,7 +67,7 @@ app.get('/products/:id', async (req, res, next) => {
     }
 })
 
-app.get('/products/:id/edit', async (req, res) => {
+app.get('/products/:id/edit', async (req, res, next) => {
     try {
     const { id } = req.params
     const product = await Product.findById(id)
@@ -77,7 +77,7 @@ app.get('/products/:id/edit', async (req, res) => {
     }
 })
 
-app.put('/products/:id', async (req, res) => {
+app.put('/products/:id', async (req, res, next) => {
     try {
     const { id } = req.params
     const product = await Product.findByIdAndUpdate(id, req.body, { runValidators: true })
@@ -87,7 +87,7 @@ app.put('/products/:id', async (req, res) => {
     }
 })
 
-app.delete('/products/:id', async(req,res) => {
+app.delete('/products/:id', async(req,res, next) => {
     try {
     const { id } = req.params
     await Product.findByIdAndDelete(id)

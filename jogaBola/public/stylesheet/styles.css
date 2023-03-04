@@ -1,0 +1,22 @@
+/* PÁGINA DE ERRO */
+
+#error_img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#error_text{
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+#error_text .big {
+    font-size: 5rem;
+}
+
+#error_full {
+    margin-top: 2rem;
+    padding-bottom: 2rem ;
+}
