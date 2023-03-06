@@ -109,7 +109,7 @@ app.put("/campos/:id", validateCampo, catchAsync(async (req, res, next) => {
 app.delete('/campos/:id', catchAsync(async (req, res, next) => {
     const { id } = req.params
     await Campo.findByIdAndDelete(id)
-    res.redirect('/campos')
+    res.redirect('/campos/')
 }))
 
 app.post('/campos/:id/reviews', validateReview, catchAsync(async(req,res) => {
@@ -119,6 +119,12 @@ app.post('/campos/:id/reviews', validateReview, catchAsync(async(req,res) => {
     await review.save()
     await campo.save()
     res.redirect(`/campos/${campo._id}`)
+}))
+
+app.delete('/campos/:id/reviews/:reviewId', catchAsync(async (req,res) => {
+    Campo.findByIdAndUpdate(req.params.id, {$pull: {reviews: req.params.reviewId}})
+    await Review.findByIdAndDelete(req.params.reviewId)
+    res.redirect(`/campos/${req.params.id}`)
 }))
 
 app.all("*", (req, res, next) => {

@@ -1,42 +1,67 @@
 <% layout('layouts/boilerplate') %>
 
-<div class="row">
-    <div class="col-6 offset-3">
-        <div class="card mb-3">
-            <img src="<%= essecampo.imagem %>" class="card-img-top" alt="imagem do campo">
-            <div class="card-body">
-                <h5 class="card-title"><%= essecampo.titulo %></h5>
-                <p class="card-text"><small class="text-muted"><%= essecampo.local %></small></p>
-                <p class="card-text"><%= essecampo.descricao %></p>
-                <hr>
-                <p class="card-text"><h2>Preço: R$ <%= essecampo.preco %> / Hora</h2></p>
-                <hr>
-            <div class="card-body d-flex justify-content-start ps-0">
-                <a class="card-link btn btn-outline-success mb-2 me-2" href="/campos/<%= essecampo._id %>/edit">Editar Campo</a><br>
-                <a class="card-link btn btn-success mb-2" href="/campos">Todos os Campos</a>
-          </div>
-    </div>
-    <div class="card-footer text-muted">editado à 1 dia atrás</div>
-    <form action="/campos/<%= essecampo._id %>/reviews" method="POST" class="mb-3 p-3 needs-validation" novalidate>
-        <div class="mb-3">
-            <label class="form-label" for="rating">Sua nota:</label>
-            <input class="form-range" type="range" min="1" max="5" name="review[rating]">
+    <div class="row">
+        <div class="col-6">
+            <div class="card mb-3">
+                <img src="<%= essecampo.imagem %>" class="card-img-top" alt="imagem do campo">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <%= essecampo.titulo %>
+                    </h5>
+                    <p class="card-text"><small class="text-muted">
+                            <%= essecampo.local %>
+                        </small></p>
+                    <p class="card-text">
+                        <%= essecampo.descricao %>
+                    </p>
+                    <hr>
+                    <p class="card-text">
+                    <h2>Preço: R$ <%= essecampo.preco %> / Hora</h2>
+                    </p>
+                    <hr>
+                    <div class="card-body d-flex justify-content-start ps-0">
+                        <a class="card-link btn btn-outline-success mb-2 me-2"
+                            href="/campos/<%= essecampo._id %>/edit">Editar Campo</a><br>
+                        <a class="card-link btn btn-success mb-2" href="/campos">Todos os Campos</a>
+                    </div>
+                </div>
+                <div class="card-footer text-muted">editado à 1 dia atrás</div>
+            </div>
         </div>
-        <div class="mb-3">
-            <label class="form-label" for="body">Sua avaliação:</label>
-            <textarea class="form-control" name="review[body]" id="body" cols="30" rows="3" minlength="20" required></textarea>
-            <div class="valid-feedback">
-                Parece bom!
-              </div>  
-            <div class="invalid-feedback">
-                Fale um pouco sobre o que você achou! (min. 20 caracteres)
-              </div>  
-        </div>
-        <button class="btn btn-outline-success">Enviar</button>
-    </form>
-    <% for( let review of essecampo.reviews ) { %>
-    <div class="mb-3 p-3">
-        <p>Comentário: <%= review.body %> - <%= review.rating %>/5</p>
-    </div>
-    <% } %>
-</div>
+
+
+        <div class="col-6">
+                <h1 class="m-3">Sua avaliação</h1>
+                <form action="/campos/<%= essecampo._id %>/reviews" method="POST" class="mb-3 p-3 needs-validation"
+                    novalidate>
+                    <div class="mb-3">
+                        <label class="form-label" for="rating">Sua nota:</label>
+                        <input class="form-range" type="range" min="1" max="5" name="review[rating]">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="body">Sua avaliação:</label>
+                        <textarea class="form-control" name="review[body]" id="body" cols="30" rows="3" minlength="20"
+                            required></textarea>
+                        <div class="valid-feedback">
+                            Parece bom!
+                        </div>
+                        <div class="invalid-feedback">
+                            Fale um pouco sobre o que você achou! (min. 20 caracteres)
+                        </div>
+                    </div>
+                    <button class="btn btn-outline-success">Enviar</button>
+                </form>
+                <% for( let review of essecampo.reviews ) { %>
+                    <div class="card mb-3 p-3">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <h4>Rating: <%= review.rating %>/5</h4>
+                            </h5>
+                            <div class="card-text">Comentário: <%= review.body %>
+                            </div>
+                            <form action="/campos/<%= essecampo._id %>/reviews/<%= review._id %>?_method=DELETE" method="POST">
+                                <button class="btn btn-danger"><small>Delete</small></button>
+                            </form>
+                        </div>
+                    </div>
+                    <% } %>
