@@ -6,7 +6,13 @@ const campoSchema = new Schema ({
     imagem: String,
     preco: Number,
     descricao: String,
-    local: String
+    local: String,
+    reviews: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Review'
+        }
+    ]
 })
 
 module.exports = mongoose.model('Campo', campoSchema)

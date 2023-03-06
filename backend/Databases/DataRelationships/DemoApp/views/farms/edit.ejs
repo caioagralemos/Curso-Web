@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editando <%= farm.name %>
+    </title>
+</head>
+
+<body>
+    <h1>Edite um produto (<%= farm.name %>)</h1>
+    <form action="/farms/<%= farm._id %>?_method=PUT" method="POST">
+        <p>
+            <label for="name">Nome da fazenda:</label>
+            <input type="text" name="name" placeholder="Full Belly Farms" value="<%= farm.name %>">
+        </p>
+        <p>
+            <label for="city">Cidade da Fazenda:</label>
+            <input type="text" name="city" placeholder="Atlanta, GA" value="<%= farm.city %>">
+        </p>
+        <p>
+            <label for="email">Email da fazenda:</label>
+            <input type="text" name="email" placeholder="fullbelly@fbf.com" value="<%= farm.email %>">
+        </p>
+        <button>Submit</button> 
+    </form>
+    <br>
+    <form action="/farms/<%= farm._id %>?_method=DELETE" method="POST">
+        <button>Delete</button>
+    </form>
+    <br>
+    <a href="/farms/<%= farm._id %>">cancelar operação</a>
+</body>
+
+</html>

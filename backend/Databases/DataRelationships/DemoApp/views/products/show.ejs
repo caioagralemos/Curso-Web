@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes de <%= product.name %></title>
+</head>
+<body>
+    <h2><%= product.name %></h2>
+    <hr>
+    <div><small>Categoria: <a href="/?category=<%= product.category %>"><%= product.category %></a></small></div>
+    <br>
+    <div>Data da colheita: 25/02/22</div>
+    <div>Data de validade: 03/03/22</div>
+    <div>Fazenda: <a href="/farms/<%= product.farm._id %>"><%= product.farm.name %></a></div>
+    <div>Preço: R$ <%= product.price %> / kg</div>
+    <br>
+    <a href="<%= product._id %>/edit">editar produto</a>
+    <br>
+    <a href="/products">todos os produtos</a>
+</body>
+</html>
