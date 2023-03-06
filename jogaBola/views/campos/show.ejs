@@ -17,15 +17,26 @@
           </div>
     </div>
     <div class="card-footer text-muted">editado à 1 dia atrás</div>
-    <form action="" class="mb-3">
+    <form action="/campos/<%= essecampo._id %>/reviews" method="POST" class="mb-3 p-3 needs-validation" novalidate>
         <div class="mb-3">
             <label class="form-label" for="rating">Sua nota:</label>
             <input class="form-range" type="range" min="1" max="5" name="review[rating]">
         </div>
         <div class="mb-3">
             <label class="form-label" for="body">Sua avaliação:</label>
-            <textarea class="form-control" name="review[body]" id="body" cols="30" rows="3"></textarea>
+            <textarea class="form-control" name="review[body]" id="body" cols="30" rows="3" minlength="20" required></textarea>
+            <div class="valid-feedback">
+                Parece bom!
+              </div>  
+            <div class="invalid-feedback">
+                Fale um pouco sobre o que você achou! (min. 20 caracteres)
+              </div>  
         </div>
         <button class="btn btn-outline-success">Enviar</button>
     </form>
+    <% for( let review of essecampo.reviews ) { %>
+    <div class="mb-3 p-3">
+        <p>Comentário: <%= review.body %> - <%= review.rating %>/5</p>
+    </div>
+    <% } %>
 </div>

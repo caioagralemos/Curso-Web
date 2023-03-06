@@ -4,6 +4,7 @@ const mongoose = require('mongoose')
 const ejsMate = require('ejs-mate')
 const methodOverride = require('method-override')
 const Campo = require('./models/campo')
+const Review = require('./models/review')
 const ExpressError = require('./utils/ExpressError')
 const catchAsync = require('./utils/catchAsync')
 const Joi = require('joi')
@@ -49,6 +50,23 @@ const validateCampo = (req, res, next) => {
     }
 }
 
+const validateReview = (req, res, next) => {
+    let reviewSchemaVAL = Joi.object({
+        review: Joi.object({
+            body: Joi.string().required(),
+            rating: Joi.number().required()
+        }).required()
+    })
+    const {error} = reviewSchemaVAL.validate(req.body)
+    if (error) {
+        console.log(error)
+        const msg = error.details.map(el => el.message).join(',')
+        throw new ExpressError(msg, 400)
+    } else {
+        next()
+    }
+}
+
 app.get("/", (req, res) => {
     res.render("home.ejs")
 })
@@ -71,7 +89,8 @@ app.post("/campos", validateCampo, catchAsync(async (req, res, next) => {
 
 app.get("/campos/:id", catchAsync(async (req, res, next) => {
     const { id } = req.params
-    const essecampo = await Campo.findById(id)
+    const essecampo = await Campo.findById(id).populate('reviews')
+    console.log(essecampo)
     res.render("campos/show.ejs", { essecampo })
 }))
 
@@ -91,6 +110,15 @@ app.delete('/campos/:id', catchAsync(async (req, res, next) => {
     const { id } = req.params
     await Campo.findByIdAndDelete(id)
     res.redirect('/campos')
+}))
+
+app.post('/campos/:id/reviews', validateReview, catchAsync(async(req,res) => {
+    const campo = await Campo.findById(req.params.id)
+    const review = new Review(req.body.review)
+    campo.reviews.push(review)
+    await review.save()
+    await campo.save()
+    res.redirect(`/campos/${campo._id}`)
 }))
 
 app.all("*", (req, res, next) => {
