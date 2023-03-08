@@ -15,7 +15,7 @@ const User = require('./models/user')
 
 mongoose.set('strictQuery', false)
 
-mongoose.connect('mongodb://localhost:27017/jogaBola', {
+mongoose.connect('mongodb://localhost:27017/jogBola', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
@@ -46,7 +46,12 @@ const sessionConfig = {
     }
 }
 
-app.use(session(sessionConfig))
+app.use(session({
+    secret: 'chavesecretanaotaosecreta--jogbola.com',
+    resave: false,
+    saveUninitialized: false,
+    cookie: { maxAge: 7 * 24 * 60 * 60 * 1000 } // define a validade do cookie para 7 dias
+  }))
 app.use(flash())
 
 app.use(passport.initialize()) // inicializa o passport
@@ -57,8 +62,10 @@ passport.serializeUser(User.serializeUser())
 passport.deserializeUser(User.deserializeUser())
 
 app.use((req, res, next) => {
+    res.locals.currentUser = req.user
     res.locals.success = req.flash('success')
     res.locals.error = req.flash('error')
+    app.locals.req = req;
     next()
 })
 
@@ -77,7 +84,7 @@ app.all("*", (req, res, next) => {
 app.use((err, req, res, next) => {
     console.log(err)
     const {statusCode = 500, message = "Algo deu errado"} = err
-    res.status(statusCode).render('campos/error.ejs', {statusCode, message})
+    res.status(statusCode).render('campos/error.ejs', {statusCode, message })
 })
 
 app.listen(3000, () => {

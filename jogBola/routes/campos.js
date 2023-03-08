@@ -29,15 +29,23 @@ const validateCampo = (req, res, next) => {
 
 router.get("/", catchAsync(async (req, res, next) => {
     const campos = await Campo.find({})
-    res.render("campos/index.ejs", { campos, messages: res.locals.success })
+    res.render("campos/index.ejs", { campos, messages: res.locals.success})
 }))
 
 router.get("/new", (req, res) => {
-    // tem que vir antes do que mexe com id se não new vai ser tratado como id
+    if(!req.isAuthenticated()) {
+        req.flash('error', 'Calma lá, jogador(a)! Você precisa entrar para fazer isso!')
+        return res.redirect('/login')
+        } 
+        // tem que vir antes do que mexe com id se não new vai ser tratado como id
     res.render("campos/new.ejs")
 })
 
 router.post("/", validateCampo, catchAsync(async (req, res, next) => {
+    if(!req.isAuthenticated()) {
+        req.flash('error', 'Calma lá, jogador(a)! Você precisa entrar para fazer isso!')
+        return res.redirect(`/campos`)
+        } 
     let novoCampo = new Campo(req.body.campo)
     await novoCampo.save()
     req.flash('success', 'Campo adicionado com sucesso!')
@@ -52,6 +60,10 @@ router.get("/:id", catchAsync(async (req, res, next) => {
 
 router.get("/:id/edit", catchAsync(async (req, res, next) => {
     const essecampo = await Campo.findById(req.params.id)
+    if(!req.isAuthenticated()) {
+        req.flash('error', 'Calma lá, jogador(a)! Você precisa entrar para fazer isso!')
+        return res.redirect(`/campos/${essecampo._id}`)
+        } 
     res.render("campos/edit.ejs", { essecampo })
 }))
 
@@ -59,12 +71,20 @@ router.put("/:id", validateCampo, catchAsync(async (req, res, next) => {
     if (!req.body.campo) throw new ExpressError('Algo deu Errado', 400)
     const { id } = req.params
     const campo = await Campo.findByIdAndUpdate(id, { ...req.body.campo })
+    if(!req.isAuthenticated()) {
+        req.flash('error', 'Calma lá, jogador(a)! Você precisa entrar para fazer isso!')
+        return res.redirect(`/campos/${campo._id}`)
+        } 
     req.flash('success', 'Campo editado com sucesso!')
     res.redirect(`/campos/${id}`)
 }))
 
 router.delete('/:id', catchAsync(async (req, res, next) => {
     const { id } = req.params
+    if(!req.isAuthenticated()) {
+        req.flash('error', 'Calma lá, jogador(a)! Você precisa entrar para fazer isso!')
+        return res.redirect(`/campos/${id}`)
+        } 
     await Campo.findByIdAndDelete(id)
     req.flash('success', 'Campo deletado com sucesso!')
     res.redirect('/campos/')

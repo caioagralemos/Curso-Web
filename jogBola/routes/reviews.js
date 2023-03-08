@@ -25,6 +25,10 @@ const validateReview = (req, res, next) => {
 
 router.post('/', validateReview, catchAsync(async(req,res) => {
     const campo = await Campo.findById(req.params.id)
+    if(!req.isAuthenticated()) {
+        req.flash('error', 'Calma lá, jogador(a)! Você precisa entrar para fazer isso!')
+        return res.redirect(`/campos/${campo._id}`)
+        } 
     const review = new Review(req.body.review)
     campo.reviews.push(review)
     await review.save()

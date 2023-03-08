@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const Campo = require('../models/campo')
 const campos = require('./seeds')
 
-mongoose.connect('mongodb://localhost:27017/jogaBola', {
+mongoose.connect('mongodb://localhost:27017/jogBola', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })

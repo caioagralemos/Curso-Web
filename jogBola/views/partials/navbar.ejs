@@ -14,6 +14,14 @@
                     <a class="nav-link" href="/campos">Campos</a>
                     <a class="nav-link" href="/campos/new">Novo Campo</a>
                 </div>
+                <div class="navbar-nav ms-auto">
+                    <% if (req.isAuthenticated()) { %>
+                        <a href="/logout" class="nav-link">Sair</a>
+                    <% } else { %>
+                        <a href="/login" class="nav-link">Entrar</a>
+                        <a href="/register" class="nav-link">Crie sua Conta</a>
+                     <% } %>
+                </div>
             </div>
         </div>
     </nav>
