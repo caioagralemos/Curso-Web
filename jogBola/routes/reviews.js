@@ -5,6 +5,7 @@ const Campo = require('../models/campo')
 const Review = require('../models/review')
 const Joi = require('joi')
 const ExpressError = require('../utils/ExpressError')
+const reviewControllers = require('../controllers/reviews')
 
 const validateReview = (req, res, next) => {
     let reviewSchemaVAL = Joi.object({
@@ -23,25 +24,8 @@ const validateReview = (req, res, next) => {
     }
 }
 
-router.post('/', validateReview, catchAsync(async(req,res) => {
-    const campo = await Campo.findById(req.params.id)
-    if(!req.isAuthenticated()) {
-        req.flash('error', 'Calma lá, jogador(a)! Você precisa entrar para fazer isso!')
-        return res.redirect(`/campos/${campo._id}`)
-        } 
-    const review = new Review(req.body.review)
-    campo.reviews.push(review)
-    await review.save()
-    await campo.save()
-    req.flash('success', 'Nova review criada!')
-    res.redirect(`/campos/${campo._id}`)
-}))
+router.post('/', validateReview, catchAsync(reviewControllers.criarReview))
 
-router.delete('/:reviewId', catchAsync(async (req,res) => {
-    Campo.findByIdAndUpdate(req.params.id, {$pull: {reviews: req.params.reviewId}})
-    await Review.findByIdAndDelete(req.params.reviewId)
-    req.flash('success', 'Review deletada!')
-    res.redirect(`/campos/${req.params.id}`)
-}))
+router.delete('/:reviewId', catchAsync(reviewControllers.deletarReview))
 
 module.exports = router

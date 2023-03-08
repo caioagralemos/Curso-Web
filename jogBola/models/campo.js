@@ -8,6 +8,10 @@ const campoSchema = new Schema ({
     preco: Number,
     descricao: String,
     local: String,
+    autor: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+        },
     reviews: [
         {
             type: Schema.Types.ObjectId,
