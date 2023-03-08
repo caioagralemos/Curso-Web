@@ -1,4 +1,5 @@
 <% layout('layouts/boilerplate') %>
+<link rel="stylesheet" href="/stylesheets/stars.css">
 
     <div class="row">
         <div class="col-6">
@@ -36,9 +37,21 @@
                 <h1 class="m-3">Sua avaliação</h1>
                 <form action="/campos/<%= essecampo._id %>/reviews" method="POST" class="mb-3 p-3 needs-validation"
                     novalidate>
-                    <div class="mb-3">
-                        <label class="form-label" for="rating">Sua nota:</label>
-                        <input class="form-range" type="range" min="1" max="5" name="review[rating]">
+                    <div class="mb-1">
+                        <label class="form-label" for="review[rating]">Sua nota:</label>
+                        <fieldset class="starability-basic">
+                            <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="1" checked aria-label="No rating." />
+                            <input type="radio" id="first-rate1" name="review[rating]" value="1" />
+                            <label for="first-rate1" title="Péssimo">1</label>
+                            <input type="radio" id="first-rate2" name="review[rating]" value="2" />
+                            <label for="first-rate2" title="Ruim">2</label>
+                            <input type="radio" id="first-rate3" name="review[rating]" value="3" />
+                            <label for="first-rate3" title="Mais ou menos">3</label>
+                            <input type="radio" id="first-rate4" name="review[rating]" value="4" />
+                            <label for="first-rate4" title="Bom">4</label>
+                            <input type="radio" id="first-rate5" name="review[rating]" value="5" />
+                            <label for="first-rate5" title="Pica, tá?">5</label>
+                          </fieldset>
                     </div>
                     <div class="mb-3">
                         <label class="form-label" for="body">Sua avaliação:</label>
@@ -57,11 +70,14 @@
                     <div class="card mb-3 p-3">
                         <div class="card-body">
                             <h5 class="card-title">
-                                @<%= review.autor.username %>
+                                <p class="starability-result" data-rating='<%= review.rating %>'>
+                                    Nota: <b><%= review.rating %>/5</b>
+                                  </p>
                             </h5>
                             <div class="card-text"><%= review.body %></div>
-                            <div class="card-text">Nota: <b><%= review.rating %>/5</b></div>
+                            <div class="card-text text-muted">de @<%= review.autor.username %></div>
                             <% if(currentUser && review.autor.equals(currentUser._id)) { %>
+                            <br>
                             <form action="/campos/<%= essecampo._id %>/reviews/<%= review._id %>?_method=DELETE" method="POST">
                                 <button class="btn btn-danger"><small>Delete</small></button>
                             </form>

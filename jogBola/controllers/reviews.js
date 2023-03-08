@@ -1,4 +1,5 @@
 const Review = require('../models/review')
+const Campo = require('../models/campo')
 
 module.exports.criarReview = async(req,res) => {
     const campo = await Campo.findById(req.params.id)
@@ -16,7 +17,10 @@ module.exports.criarReview = async(req,res) => {
 }
 
 module.exports.deletarReview = async (req,res) => {
-    const { id } = req.params
+    const { id, reviewId } = req.params
+    const review = await Review.findOne({_id: reviewId})
+    console.log(reviewId)
+    console.log(review)
     if(!review.autor.equals(req.user._id)) {
             req.flash('error', 'Calma lá, jogador(a)! Você não tem permissão pra fazer isso! Cartão amarelo pra você!')
             return res.redirect(`/campos/${id}`)
