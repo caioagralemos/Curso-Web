@@ -26,3 +26,13 @@
     height: auto;
     margin-left: .5rem;
 }
+
+#success-image {
+    margin-right: 10px; /* Define um espaçamento entre a imagem e a mensagem */
+    float: left; /* Define a imagem para flutuar à esquerda */
+  }
+  
+  #success-message {
+    overflow: hidden; /* Força a div da mensagem a se ajustar à altura da imagem */
+  }
+  

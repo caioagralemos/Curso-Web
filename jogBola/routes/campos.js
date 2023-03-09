@@ -7,6 +7,8 @@ const Joi = require('joi')
 const ExpressError = require('../utils/ExpressError')
 const flash = require('connect-flash')
 const campoControllers = require('../controllers/campos')
+const multer = require('multer')
+const upload = multer({ dest: 'uploads/' })
 
 const validateCampo = (req, res, next) => {
     let campoSchemaVAL = Joi.object({
@@ -32,7 +34,10 @@ router.get("/", catchAsync(campoControllers.index))
 
 router.get("/new", campoControllers.novoCampoGet)
 
-router.post("/", validateCampo, catchAsync(campoControllers.novoCampoPost))
+// router.post("/", validateCampo, catchAsync(campoControllers.novoCampoPost))
+router.post("/", upload.single('image'), (req, res) => {
+    res.send(req.body)
+})
 
 router.get("/:id", catchAsync(campoControllers.campoGet))
 

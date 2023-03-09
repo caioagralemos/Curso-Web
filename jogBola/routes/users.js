@@ -13,7 +13,7 @@ router.post('/register', userControllers.registerPost)
 
 router.get('/login', userControllers.loginGet)
 
-router.post('/login', passport.authenticate('local', { failureRedirect: '/login', failureFlash: 'Alguma coisa tá errada, jogador(a)! Olha aí direitinho e tenta de novo :)'}), userControllers.loginPost)
+router.post('/login', passport.authenticate('local', { failureRedirect: '/login', failureFlash: 'Alguma coisa tá errada, jogador(a)! Tenta de novo'}), userControllers.loginPost)
 
 router.get('/logout', userControllers.logout)
 
