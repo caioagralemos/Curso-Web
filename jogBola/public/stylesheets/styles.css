@@ -20,3 +20,9 @@
     margin-top: 2rem;
     padding-bottom: 2rem ;
 }
+
+#navbarlogo{
+    max-width: 6.5rem;
+    height: auto;
+    margin-left: .5rem;
+}
