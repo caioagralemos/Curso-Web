@@ -1,27 +1,39 @@
 <% layout('layouts/boilerplate') %>
-<link rel="stylesheet" href="/stylesheets/stars.css">
+    <link rel="stylesheet" href="/stylesheets/stars.css">
+
+    <script>
+        const mapToken = '<%- process.env.MAPBOX_TOKEN %>'
+        const lng = '<%= essecampo.geometry.coordinates[0] %>'
+        const lat = '<%= essecampo.geometry.coordinates[1] %>'
+    </script>
+    
+    <% if (essecampo.geometry.coordinates[0] && essecampo.geometry.coordinates[1]) { %>
+    <div id='map' style='width: 400px; height: 300px;'></div>
+    <% } %>
 
     <div class="row">
         <div class="col-6">
             <div id="carrosselCampos" class="carousel slide">
                 <div class="carousel-inner">
-                    <% essecampo.imagem.forEach((img, i) => { %>
-                  <div class="carousel-item <%= i === 0 ? 'active' : '' %>">
-                    <img src="<%= img.url %>" class="d-block w-100" alt="...">
-                    </div>
-                <% }) %>
+                    <% essecampo.imagem.forEach((img, i)=> { %>
+                        <div class="carousel-item <%= i === 0 ? 'active' : '' %>">
+                            <img src="<%= img.url %>" class="d-block w-100" alt="...">
+                        </div>
+                        <% }) %>
                 </div>
-                <% if (essecampo.imagem.length > 1) { %>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carrosselCampos" data-bs-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carrosselCampos" data-bs-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Next</span>
-                </button>
-                <% } %>
-              </div>
+                <% if (essecampo.imagem.length> 1) { %>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carrosselCampos"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carrosselCampos"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                    <% } %>
+            </div>
             <div class="card mb-3">
                 <div class="card-body">
                     <h5 class="card-title">
@@ -40,83 +52,94 @@
                     <hr>
                     <div class="card-body d-flex justify-content-start ps-0">
 
-                        <% if(essecampo.instagram && essecampo.instagram !== "") { %>
+                        <% if(essecampo.instagram && essecampo.instagram !=="" ) { %>
                             <a class="card-link btn btn-outline-success mb-2 me-2"
                                 href="https://instagram.com/<%= essecampo.instagram %>">Instagram</a><br>
-                            <% } %>  
+                            <% } %>
 
-                        <% if(essecampo.telefone && essecampo.telefone !== "") { %>
-                            <a class="card-link btn btn-outline-success mb-2 me-2"
-                                href="tel:<%= essecampo.telefone %>">Telefone</a><br>
-                             <% } %>  
+                                <% if(essecampo.telefone && essecampo.telefone !=="" ) { %>
+                                    <a class="card-link btn btn-outline-success mb-2 me-2"
+                                        href="tel:<%= essecampo.telefone %>">Telefone</a><br>
+                                    <% } %>
 
-                        <a class="card-link btn btn-success mb-2 me-2" href="/campos">Todos os Campos</a> 
+                                        <a class="card-link btn btn-success mb-2 me-2" href="/campos">Todos os
+                                            Campos</a>
                     </div>
 
                     <% if(currentUser && essecampo.autor.equals(currentUser._id)) { %>
-                    <hr>
-                    <div class="card-body d-flex justify-content-start ps-0">
+                        <hr>
+                        <div class="card-body d-flex justify-content-start ps-0">
                             <br>
                             <a class="card-link btn btn-outline-warning mb-2 me-2"
-                                href="/campos/<%= essecampo._id %>/edit">Editar Campo</a>  
-                    </div>
-                    <% } %> 
+                                href="/campos/<%= essecampo._id %>/edit">Editar Campo</a>
+                        </div>
+                        <% } %>
 
                 </div>
-                <div class="card-footer text-muted">criado por @<%= essecampo.autor.username %></div>
+                <div class="card-footer text-muted">criado por @<%= essecampo.autor.username %>
+                </div>
             </div>
         </div>
 
 
         <div class="col-6">
-                <h1 class="m-3">Sua avaliação</h1>
-                <form action="/campos/<%= essecampo._id %>/reviews" method="POST" class="mb-3 p-3 needs-validation"
-                    novalidate>
-                    <div class="mb-1">
-                        <label class="form-label" for="review[rating]">Sua nota:</label>
-                        <fieldset class="starability-basic">
-                            <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="1" checked aria-label="No rating." />
-                            <input type="radio" id="first-rate1" name="review[rating]" value="1" />
-                            <label for="first-rate1" title="Péssimo">1</label>
-                            <input type="radio" id="first-rate2" name="review[rating]" value="2" />
-                            <label for="first-rate2" title="Ruim">2</label>
-                            <input type="radio" id="first-rate3" name="review[rating]" value="3" />
-                            <label for="first-rate3" title="Mais ou menos">3</label>
-                            <input type="radio" id="first-rate4" name="review[rating]" value="4" />
-                            <label for="first-rate4" title="Bom">4</label>
-                            <input type="radio" id="first-rate5" name="review[rating]" value="5" />
-                            <label for="first-rate5" title="Pica, tá?">5</label>
-                          </fieldset>
+            <h1 class="m-3">Sua avaliação</h1>
+            <form action="/campos/<%= essecampo._id %>/reviews" method="POST" class="mb-3 p-3 needs-validation"
+                novalidate>
+                <div class="mb-1">
+                    <label class="form-label" for="review[rating]">Sua nota:</label>
+                    <fieldset class="starability-basic">
+                        <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="1" checked
+                            aria-label="No rating." />
+                        <input type="radio" id="first-rate1" name="review[rating]" value="1" />
+                        <label for="first-rate1" title="Péssimo">1</label>
+                        <input type="radio" id="first-rate2" name="review[rating]" value="2" />
+                        <label for="first-rate2" title="Ruim">2</label>
+                        <input type="radio" id="first-rate3" name="review[rating]" value="3" />
+                        <label for="first-rate3" title="Mais ou menos">3</label>
+                        <input type="radio" id="first-rate4" name="review[rating]" value="4" />
+                        <label for="first-rate4" title="Bom">4</label>
+                        <input type="radio" id="first-rate5" name="review[rating]" value="5" />
+                        <label for="first-rate5" title="Pica, tá?">5</label>
+                    </fieldset>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="body">Sua avaliação:</label>
+                    <textarea class="form-control" name="review[body]" id="body" cols="30" rows="3" minlength="20"
+                        required></textarea>
+                    <div class="valid-feedback">
+                        Parece bom!
                     </div>
-                    <div class="mb-3">
-                        <label class="form-label" for="body">Sua avaliação:</label>
-                        <textarea class="form-control" name="review[body]" id="body" cols="30" rows="3" minlength="20"
-                            required></textarea>
-                        <div class="valid-feedback">
-                            Parece bom!
-                        </div>
-                        <div class="invalid-feedback">
-                            Fale um pouco sobre o que você achou! (min. 20 caracteres)
-                        </div>
+                    <div class="invalid-feedback">
+                        Fale um pouco sobre o que você achou! (min. 20 caracteres)
                     </div>
-                    <button class="btn btn-outline-success">Enviar</button>
-                </form>
-                <% for( let review of essecampo.reviews ) { %>
-                    <div class="card mb-3 p-3">
-                        <div class="card-body">
-                            <h5 class="card-title">
-                                <p class="starability-result" data-rating='<%= review.rating %>'>
-                                    Nota: <b><%= review.rating %>/5</b>
-                                  </p>
-                            </h5>
-                            <div class="card-text"><%= review.body %></div>
-                            <div class="card-text text-muted">de @<%= review.autor.username %></div>
-                            <% if(currentUser && review.autor.equals(currentUser._id)) { %>
+                </div>
+                <button class="btn btn-outline-success">Enviar</button>
+            </form>
+            <% for( let review of essecampo.reviews ) { %>
+                <div class="card mb-3 p-3">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <p class="starability-result" data-rating='<%= review.rating %>'>
+                                Nota: <b>
+                                    <%= review.rating %>/5
+                                </b>
+                            </p>
+                        </h5>
+                        <div class="card-text">
+                            <%= review.body %>
+                        </div>
+                        <div class="card-text text-muted">de @<%= review.autor.username %>
+                        </div>
+                        <% if(currentUser && review.autor.equals(currentUser._id)) { %>
                             <br>
-                            <form action="/campos/<%= essecampo._id %>/reviews/<%= review._id %>?_method=DELETE" method="POST">
+                            <form action="/campos/<%= essecampo._id %>/reviews/<%= review._id %>?_method=DELETE"
+                                method="POST">
                                 <button class="btn btn-danger"><small>Delete</small></button>
                             </form>
                             <% } %>
-                        </div>
                     </div>
-                    <% } %>
+                </div>
+                <% } %>
+            
+                <script src="/javascript/showPage.js"></script>

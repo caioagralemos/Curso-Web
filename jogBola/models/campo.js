@@ -8,6 +8,17 @@ const campoSchema = new Schema ({
     descricao: String,
     endereco: String,
     cidade: String,
+    geometry:{
+        type: {
+            type: String,
+            enum: ['Point'],
+            required: true
+        },
+        coordinates:{
+            type: [Number],
+            required: true
+        }
+    },
     telefone: String,
     instagram: String,
     imagem: [

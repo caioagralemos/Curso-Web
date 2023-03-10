@@ -1,4 +1,7 @@
 const Campo = require('../models/campo')
+const mbxGeocoding = require('@mapbox/mapbox-sdk/services/geocoding')
+const mapboxToken = process.env.MAPBOX_TOKEN
+const geocoder = mbxGeocoding({ accessToken: mapboxToken })
 const {cloudinary} = require('../cloudinary')
 
 module.exports.index = async (req, res) => {
@@ -23,6 +26,11 @@ module.exports.novoCampoPost = async (req, res, next) => {
     let novoCampo = new Campo(req.body.campo)
     novoCampo.imagem = req.files.map(f => ({url: f.path, filename: f.filename}))
     novoCampo.autor = req.user._id
+    const geoData = await geocoder.forwardGeocode({
+        query: `${novoCampo.endereco}, ${novocampo.cidade}`,
+        limit: 1
+    }).send()
+    novoCampo.geometry = geoData.body.features[0].geometry
     await novoCampo.save()
     req.flash('success', `Campo adicionado com sucesso, ${req.user.name}`)
     res.redirect(`/campos/${novoCampo._id}`)
@@ -68,6 +76,11 @@ module.exports.campoEditPost = async (req, res, next) => {
     const campo = await Campo.findByIdAndUpdate(id, { ...req.body.campo })
     const imgs = req.files.map(f => ({url: f.path, filename: f.filename}))
     campo.imagem.push(...imgs) // desfazendo um array e passando argumentos individuais
+    const geoData = await geocoder.forwardGeocode({
+        query: `${campo.endereco}, ${campo.cidade}`,
+        limit: 1
+    }).send()
+    campo.geometry = geoData.body.features[0].geometry
     await campo.save()
     if(req.body.deletarimagens) {
         for(let filename of req.body.deletarimagens){
