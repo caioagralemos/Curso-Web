@@ -8,13 +8,14 @@ const ExpressError = require('../utils/ExpressError')
 const flash = require('connect-flash')
 const campoControllers = require('../controllers/campos')
 const multer = require('multer')
-const upload = multer({ dest: 'uploads/' })
+const {storage} = require('../cloudinary')
+const upload = multer({ storage })
 
 const validateCampo = (req, res, next) => {
     let campoSchemaVAL = Joi.object({
         campo: Joi.object({
             titulo: Joi.string().required(),
-            imagem: Joi.string().required(),
+            // imagem: Joi.string().required(),
             preco: Joi.number().required().min(0),
             descricao: Joi.string().required(),
             local: Joi.string().required()
@@ -34,10 +35,8 @@ router.get("/", catchAsync(campoControllers.index))
 
 router.get("/new", campoControllers.novoCampoGet)
 
-// router.post("/", validateCampo, catchAsync(campoControllers.novoCampoPost))
-router.post("/", upload.single('image'), (req, res) => {
-    res.send(req.body)
-})
+router.post("/", upload.array('imagem'), validateCampo, catchAsync(campoControllers.novoCampoPost))
+
 
 router.get("/:id", catchAsync(campoControllers.campoGet))
 

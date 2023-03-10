@@ -20,6 +20,7 @@ module.exports.novoCampoPost = async (req, res, next) => {
         return res.redirect(`/campos`)
         } 
     let novoCampo = new Campo(req.body.campo)
+    novoCampo.imagem = req.files.map(f => ({url: f.path, filename: f.filename}))
     novoCampo.autor = req.user._id
     await novoCampo.save()
     req.flash('success', `Campo adicionado com sucesso, ${req.user.name}`)

@@ -4,7 +4,9 @@
     <div class="row">
         <div class="col-6">
             <div class="card mb-3">
-                <img src="<%= essecampo.imagem %>" class="card-img-top" alt="imagem do campo">
+                <% for( let img of essecampo.imagem ) { %>
+                    <img src="<%= img.url %>" class="card-img-top" alt="imagem do campo">
+                <% } %>
                 <div class="card-body">
                     <h5 class="card-title">
                         <%= essecampo.titulo %>
