@@ -1,4 +1,5 @@
 const Campo = require('../models/campo')
+const {cloudinary} = require('../cloudinary')
 
 module.exports.index = async (req, res) => {
     const campos = await Campo.find({})
@@ -65,6 +66,15 @@ module.exports.campoEditPost = async (req, res, next) => {
             return res.redirect(`/campos/${camp._id}`)
     }
     const campo = await Campo.findByIdAndUpdate(id, { ...req.body.campo })
+    const imgs = req.files.map(f => ({url: f.path, filename: f.filename}))
+    campo.imagem.push(...imgs) // desfazendo um array e passando argumentos individuais
+    await campo.save()
+    if(req.body.deletarimagens) {
+        for(let filename of req.body.deletarimagens){
+            await cloudinary.uploader.destroy(filename)
+        }
+        await campo.updateOne({$pull: {imagem: {filename: {$in: req.body.deletarimagens}}}})
+    }
     req.flash('success', `Campo editado com sucesso, ${req.user.name}!`)
     res.redirect(`/campos/${id}`)
 }
@@ -79,6 +89,9 @@ module.exports.campoDelete = async (req, res, next) => {
     if(!camp.autor.equals(req.user._id)) {
             req.flash('error', 'Calma lá, jogador(a)! Você não tem permissão pra fazer isso! Cartão amarelo pra você!')
             return res.redirect(`/campos/${id}`)
+    }
+    for(let file of camp.imagem){
+        await cloudinary.uploader.destroy(file.filename)
     }
     await Campo.findByIdAndDelete(id)
     req.flash('success', `Campo deletado com sucesso, ${req.user.name}!`)

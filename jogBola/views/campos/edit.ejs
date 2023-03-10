@@ -1,10 +1,10 @@
 <% layout('layouts/boilerplate') %>
     <h1 class="mb-3">Editar Campo</h1>
 
-    <form action="/campos/<%= essecampo._id %>?_method=PUT" method="POST" novalidate class="needs-validation">
+    <form action="/campos/<%= essecampo._id %>?_method=PUT" method="POST" novalidate class="needs-validation" enctype="multipart/form-data">
         <form>
             <div class="mb-3">
-                <label class="form-label" for="titulo">Nome do campo: </label>
+                <label class="form-label" for="titulo">Nome do campo </label>
                 <input class="form-control" type="text" id="title" name="campo[titulo]" placeholder="ex: Arena Ronaldinho"
                     value="<%= essecampo.titulo %>" required>
                     <div class="valid-feedback">
@@ -15,16 +15,46 @@
                       </div>         
             </div>
             <div class="mb-3">
-                <label class="form-label" for="local">Cidade:</label>
-                <input class="form-control" type="text" id="local" name="campo[local]" placeholder="ex: Maceió"
-                    value="<%= essecampo.local %>" required>
+                <div class="row">
+                    <div class="col form-group col-md-6">
+                        <label class="form-label" for="local.endereco">Endereço</label>
+                        <input type="text" class="form-control" name="campo[endereco]" id="local.endereco" placeholder="ex. Av José Bola 21" value="<%= essecampo.endereco %>" required>
+                        <div class="valid-feedback">
+                            Parece bom!
+                        </div>
+                        <div class="invalid-feedback">
+                            Por favor, insira o endereço de seu campo.
+                        </div>
+                    </div>
+                    <div class="col-12 form-group col-md-6">
+                        <label class="form-label" for="local.cidade">Cidade</label>
+                        <input type="text" class="form-control" name="campo[cidade]" id="local.cidade" value="<%= essecampo.cidade %>" placeholder="ex. Maceió" required>
+                        <div class="valid-feedback">
+                            Parece bom!
+                        </div>
+                        <div class="invalid-feedback">
+                            Por favor, insira a cidade de seu campo.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col form-group col-md-6">
+                    <label class="form-label" for="telefone">Telefone</label>
+                    <input type="text" class="form-control" name="campo[telefone]" id="telefone" placeholder="ex. 4002-8922" value="<%= essecampo.telefone %>">
                     <div class="valid-feedback">
                         Parece bom!
                     </div>
-                    <div class="invalid-feedback">
-                        Por favor, insira a cidade onde está o seu campo.
-                      </div>         
+                </div>    
+                <div class="col-12 form-group col-md-6">
+                    <label class="form-label" for="instagram">Instagram</label>
+                    <input type="text" class="form-control" name="campo[instagram]" id="instagram" placeholder="ex. jogbolacom" value="<%= essecampo.instagram %>">
+                    <div class="valid-feedback">
+                        Parece bom!
+                    </div>
+                </div>
             </div>
+        </div>
             <div class="mb-3">
                 <label class="form-label" for="preco">Preço por hora</label>
                 <div class="input-group">
@@ -39,18 +69,18 @@
                           </div>     
                 </div>
             </div>
-            <div class="mb-3">
-                    <label class="form-label" for="imagem">Link da Imagem (se não houver imagem, não mexa):</label>
-                    <input class="form-control" type="text" id="imagem" name="campo[imagem]" placeholder="ex: Maceió" value="<%= essecampo.imagem %>" required>
-                    <div class="valid-feedback">
-                        Parece bom!
-                    </div>
-                    <div class="invalid-feedback">
-                        Por favor, insira uma imagem ou deixe o valor original.
-                      </div>  
-            </div>
+        <div class="mb-3">
+                <label for="imagem" class="form-label">Adicionar imagens</label>
+                <input class="form-control" type="file" name="imagem" multiple>
+                <div class="valid-feedback">
+                    Parece bom!
+                </div>
+                <div class="invalid-feedback">
+                    Queremos saber como é esse campo! Por favor, insira uma ou mais imagens.
+                </div>
+        </div>
             <div class="mb-3"> 
-                <label class="form-label" for="descricao">Descrição: </label><br>
+                <label class="form-label" for="descricao">Descrição </label><br>
                 <textarea class="form-control" id="descricao" name="campo[descricao]" rows="4" cols="50"
                     placeholder="ex: campo society na beira da lagoa" minlength="35" required><%= essecampo.descricao %></textarea>
                     <div class="valid-feedback">
@@ -59,6 +89,16 @@
                     <div class="invalid-feedback">
                         Fale um pouco sobre o seu campo! (min. 35 caracteres)
                       </div>  
+            </div>
+            <div class="mb-3">
+                <label for="">Marque as imagens que gostaria de deletar</label><br>
+                <% essecampo.imagem.forEach((img,i) => { %>
+                    <div class="form-check-inline" id="deletarimagens">
+                        <input type="checkbox" name="deletarimagens[]" id="image-<%= i %>" value="<%= img.filename %>">
+                        <img src="<%= img.url %>" class="img-thumbnail" style="height: auto; width: 200px;">
+                    </div>
+                <% }) %>
+                <br><br>
             </div>
             <button class="btn btn-outline-success mb-2">Enviar</button>
         </form>

@@ -15,13 +15,17 @@ const validateCampo = (req, res, next) => {
     let campoSchemaVAL = Joi.object({
         campo: Joi.object({
             titulo: Joi.string().required(),
-            // imagem: Joi.string().required(),
             preco: Joi.number().required().min(0),
             descricao: Joi.string().required(),
-            local: Joi.string().required()
-        }).required()
+            endereco: Joi.string().required(),
+            telefone: Joi.string().allow(''),
+            instagram: Joi.string().allow(''),
+            cidade: Joi.string().required()
+        }).required(),
+        deletarimagens: Joi.array()
     })
-    const { error } = campoSchemaVAL.validate(req.body)
+    const options = { stripUnknown: true };
+    const { error, value } = campoSchemaVAL.validate(req.body, options);
     if(error) {
         const msg = error.details.map(el => el.message).join(',')
         console.log(msg)
@@ -42,7 +46,7 @@ router.get("/:id", catchAsync(campoControllers.campoGet))
 
 router.get("/:id/edit", catchAsync(campoControllers.campoEditGet))
 
-router.put("/:id", validateCampo, catchAsync(campoControllers.campoEditPost))
+router.put("/:id", upload.array('imagem'), validateCampo, catchAsync(campoControllers.campoEditPost))
 
 router.delete('/:id', catchAsync(campoControllers.campoDelete))
 

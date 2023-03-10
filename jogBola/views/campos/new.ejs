@@ -4,23 +4,56 @@
     <form action="/campos" method="POST" class="needs-validation" enctype="multipart/form-data" novalidate>
         <div class="mb-3">
             <label class="form-label" for="titulo">Nome do campo</label>
-            <input class="form-control" type="text" id="titulo" name="campo[titulo]" placeholder="ex: Arena Ronaldinho" required>
+            <input class="form-control" type="text" id="titulo" name="campo[titulo]" placeholder="ex: Arena Ronaldinho"
+                required>
             <div class="valid-feedback">
                 Parece bom!
             </div>
             <div class="invalid-feedback">
                 Por favor, insira o nome do campo.
-              </div>    
+            </div>
         </div>
         <div class="mb-3">
-            <label class="form-label" for="local">Cidade</label>
-            <input class="form-control" type="text" id="local" name="campo[local]" placeholder="ex: Maceió" required>
-            <div class="valid-feedback">
-                Parece bom!
+            <div class="row">
+                <div class="col form-group col-md-6">
+                    <label class="form-label" for="local.endereco">Endereço</label>
+                    <input type="text" class="form-control" name="campo[endereco]" id="local.endereco" placeholder="ex. Av José Bola 21" required>
+                    <div class="valid-feedback">
+                        Parece bom!
+                    </div>
+                    <div class="invalid-feedback">
+                        Por favor, insira o endereço de seu campo.
+                    </div>
+                </div>
+                <div class="col-12 form-group col-md-6">
+                    <label class="form-label" for="local.cidade">Cidade</label>
+                    <input type="text" class="form-control" name="campo[cidade]" id="local.cidade" placeholder="ex. Maceió" required>
+                    <div class="valid-feedback">
+                        Parece bom!
+                    </div>
+                    <div class="invalid-feedback">
+                        Por favor, insira a cidade de seu campo.
+                    </div>
+                </div>
             </div>
-            <div class="invalid-feedback">
-                Por favor, insira a cidade onde está o seu campo.
-              </div>  
+        </div>
+        <div class="mb-3">
+            <div class="row">
+                <div class="col form-group col-md-6">
+                    <label class="form-label" for="telefone">Telefone</label>
+                    <input type="text" class="form-control" name="campo[telefone]" id="telefone" placeholder="ex. 4002-8922">
+                    <div class="valid-feedback">
+                        Parece bom!
+                    </div>
+                </div>    
+                <div class="col-12 form-group col-md-6">
+                    <label class="form-label" for="instagram">Instagram</label>
+                    <input type="text" class="form-control" name="campo[instagram]" id="instagram" placeholder="ex. jogbolacom">
+                    <div class="valid-feedback">
+                        Parece bom!
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="mb-3">
             <label class="form-label" for="preco">Preço por hora</label>
@@ -28,15 +61,24 @@
                 <span class="input-group-text" id="basic-addon1">R$</span>
                 <input class="form-control" type="number" id="preco" name="campo[preco]" placeholder="ex: 250"
                     aria-describedby="price-label" required>
-                    <div class="valid-feedback">
-                        Parece bom!
-                    </div>
-                    <div class="invalid-feedback">
-                        Por favor, insira o preço por hora do aluguel do campo.
-                      </div>              
+                <div class="valid-feedback">
+                    Parece bom!
+                </div>
+                <div class="invalid-feedback">
+                    Por favor, insira o preço por hora do aluguel do campo.
+                </div>
             </div>
         </div>
-        <input type="file" name="imagem" id="" multiple>
+        <div class="mb-3">
+            <label for="imagem" class="form-label">Imagens</label>
+            <input class="form-control" type="file" name="imagem" multiple required>
+            <div class="valid-feedback">
+                Parece bom!
+            </div>
+            <div class="invalid-feedback">
+                Por favor, insira uma ou mais imagens.
+            </div>
+        </div>
         <!-- <div class="mb-3">
             <label class="form-label" for="imagem">Link da Imagem (se não houver imagem, não mexa)</label>
             <input class="form-control" type="text" id="imagem" name="campo[imagem]" placeholder="ex: Maceió"
@@ -52,12 +94,12 @@
             <label class="form-label" for="descricao" class="mb-2">Descrição</label><br>
             <textarea class="form-control" id="descricao" name="campo[descricao]" rows="4" cols="50"
                 placeholder="ex: campo society na beira da lagoa" minlength="35" required></textarea>
-                <div class="valid-feedback">
-                    Parece bom!
-                </div>
-                <div class="invalid-feedback">
-                    Fale um pouco sobre o seu campo! (min. 35 caracteres)
-                  </div>  
+            <div class="valid-feedback">
+                Parece bom!
+            </div>
+            <div class="invalid-feedback">
+                Fale um pouco sobre o seu campo! (min. 35 caracteres)
+            </div>
         </div>
         <div class="mb-3">
             <button class="btn btn-outline-success">Enviar</button>
