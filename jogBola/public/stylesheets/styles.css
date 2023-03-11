@@ -1,38 +1,73 @@
 /* PÁGINA DE ERRO */
 
 #error_img {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-#error_text{
-    text-align: center;
-    justify-content: center;
-    align-items: center;
+#error_text {
+  text-align: center;
+  justify-content: center;
+  align-items: center;
 }
 
 #error_text .big {
-    font-size: 5rem;
+  font-size: 5rem;
 }
 
 #error_full {
-    margin-top: 2rem;
-    padding-bottom: 2rem ;
+  margin-top: 2rem;
+  padding-bottom: 2rem;
 }
 
-#navbarlogo{
-    max-width: 6.5rem;
-    height: auto;
-    margin-left: .5rem;
+#navbarlogo {
+  max-width: 6.5rem;
+  height: auto;
+  margin-left: .5rem;
 }
 
 #success-image {
-    margin-right: 10px; /* Define um espaçamento entre a imagem e a mensagem */
-    float: left; /* Define a imagem para flutuar à esquerda */
-  }
-  
-  #success-message {
-    overflow: hidden; /* Força a div da mensagem a se ajustar à altura da imagem */
-  }
-  
+  margin-right: 10px;
+  /* Define um espaçamento entre a imagem e a mensagem */
+  float: left;
+  /* Define a imagem para flutuar à esquerda */
+}
+
+#success-message {
+  overflow: hidden;
+  /* Força a div da mensagem a se ajustar à altura da imagem */
+}
+
+/* index page */
+
+#tituloindex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#filtros {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#filtros form {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#filtros input[type="text"] {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+#filtros label {
+  margin-right: 10px;
+}
+
+#filtros button {
+  margin-left: auto;
+  margin-bottom: 10px;
+}

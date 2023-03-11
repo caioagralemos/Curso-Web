@@ -8,6 +8,7 @@ const campoSchema = new Schema ({
     descricao: String,
     endereco: String,
     cidade: String,
+    verificado: Boolean,
     geometry:{
         type: {
             type: String,

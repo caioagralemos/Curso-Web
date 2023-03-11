@@ -10,7 +10,8 @@ const campo1 = new Campo ({
     }],
     preco: 120,
     descricao: "campo pequeno society bom para futebol com grupo pequeno de amigos",
-    local: "Maceió",
+    endereco: 'Av. Abdon Arroxelas 58',
+    cidade: "Maceió",
     autor: "6408b9fe36efd8b0519f085d"
 })
 
@@ -23,7 +24,8 @@ const campo2 = new Campo ({
     }],
     preco: 180,
     descricao: "Campo society grande com excelente infraestrutura",
-    local: "Maceió",
+    endereco: 'Av. Abdon Arroxelas 58',
+    cidade: "Maceió",
     autor: "6408b9fe36efd8b0519f085d"
 })
 
@@ -36,7 +38,8 @@ const campo3 = new Campo ({
     }],
     preco: 90,
     descricao: "Campo society para futebol amador",
-    local: "Maceió",
+    endereco: 'Av. Abdon Arroxelas 58',
+    cidade: "Maceió",
     autor: "6408b9fe36efd8b0519f085d"
 })
 
@@ -49,7 +52,8 @@ const campo4 = new Campo ({
     }],
     preco: 100,
     descricao: "Campo society próximo à praia para jogos com os amigos",
-    local: "Maceió",
+    endereco: 'Av. Abdon Arroxelas 58',
+    cidade: "Maceió",
     autor: "6408b9fe36efd8b0519f085d"
 })
 
@@ -61,8 +65,9 @@ const campo5 = new Campo ({
         filename: 'notrelevant'
     }],
     preco: 150,
-    descricao: "Campo society com excelente localização",
-    local: "Maceió",
+    descricao: "Campo society com excelente cidadeização",
+    endereco: 'Av. Abdon Arroxelas 58',
+    cidade: "Maceió",
     autor: "6408b9fe36efd8b0519f085d"
 })
 
@@ -75,7 +80,8 @@ const campo6 = new Campo ({
     }],
     preco: 80,
     descricao: "Campo society para jogos informais",
-    local: "Maceió",
+    endereco: 'Av. Abdon Arroxelas 58',
+    cidade: "Maceió",
     autor: "6408b9fe36efd8b0519f085d"
 })
 
@@ -88,7 +94,8 @@ const campo7 = new Campo ({
     }],
     preco: 200,
     descricao: "Campo society com grama sintética",
-    local: "Maceió",
+    endereco: 'Av. Abdon Arroxelas 58',
+    cidade: "Maceió",
     autor: "6408b9fe36efd8b0519f085d"
 })
 
@@ -100,8 +107,9 @@ const campo8 = new Campo ({
         filename: 'notrelevant'
     }],
     preco: 120,
-    descricao: "Campo society localizado na zona sul de Maceió",
-    local: "Maceió",
+    descricao: "Campo society cidadeizado na zona sul de Maceió",
+    endereco: 'Av. Abdon Arroxelas 58',
+    cidade: "Maceió",
     autor: "6408b9fe36efd8b0519f085d"
 })
 
@@ -114,7 +122,8 @@ const campo9 = new Campo ({
     }],
     preco: 80,
     descricao: "Campo society para jogos em bairros de Maceió",
-    local: "Maceió",
+    endereco: 'Av. Abdon Arroxelas 58',
+    cidade: "Maceió",
     autor: "6408b9fe36efd8b0519f085d"
 })
 
@@ -127,7 +136,8 @@ const campo10 = new Campo ({
     }],
     preco: 3000,
     descricao: "Estádio de futebol profissional com capacidade para 10.000 pessoas",
-    local: "Maceió",
+    endereco: 'Av. Abdon Arroxelas 58',
+    cidade: "Maceió",
     autor: "6408b9fe36efd8b0519f085d"
 })
 
@@ -139,8 +149,8 @@ const campo11 = new Campo ({
         filename: 'notrelevant'
     }],
     preco: 120,
-    descricao: "Campo society localizado no centro de Recife",
-    local: "Recife",
+    descricao: "Campo society cidadeizado no centro de Recife",
+    cidade: "Recife",
     autor: "6408b9fe36efd8b0519f085d"
 })
 
@@ -153,7 +163,7 @@ const campo12 = new Campo ({
     }],
     preco: 180,
     descricao: "Campo society com excelente iluminação para jogos noturnos",
-    local: "Recife",
+    cidade: "Recife",
     autor: "6408b9fe36efd8b0519f085d"
 })
 
@@ -166,7 +176,7 @@ const campo13 = new Campo ({
     }],
     preco: 90,
     descricao: "Campo society próximo aos bares da orla de recife",
-    local: "Recife",
+    cidade: "Recife",
     autor: "6408b9fe36efd8b0519f085d"
 })
 
@@ -179,7 +189,7 @@ const campo14 = new Campo ({
     }],
     preco: 150,
     descricao: "Campo society próximo à praia",
-    local: "Recife",
+    cidade: "Recife",
     autor: "6408b9fe36efd8b0519f085d"
 })
 
@@ -191,8 +201,8 @@ const campo15 = new Campo ({
         filename: 'notrelevant'
     }],
     preco: 80,
-    descricao: "Campo society localizado em shopping center",
-    local: "Recife",
+    descricao: "Campo society cidadeizado em shopping center",
+    cidade: "Recife",
     autor: "6408b9fe36efd8b0519f085d"
 })
 
@@ -205,7 +215,7 @@ const campo16 = new Campo ({
     }],
     preco: 200,
     descricao: "Campo society com grama sintética",
-    local: "Recife",
+    cidade: "Recife",
     autor: "6408b9fe36efd8b0519f085d"
 })
 
@@ -217,8 +227,8 @@ const campo17 = new Campo ({
         filename: 'notrelevant'
     }],
     preco: 120,
-    descricao: "Campo society localizado na zona norte de Recife",
-    local: "Recife",
+    descricao: "Campo society cidadeizado na zona norte de Recife",
+    cidade: "Recife",
     autor: "6408b9fe36efd8b0519f085d"
 })
 
@@ -231,7 +241,7 @@ const campo18 = new Campo ({
     }],
     preco: 80,
     descricao: "Campo society para jogos em bairros de Recife",
-    local: "Recife",
+    cidade: "Recife",
     autor: "6408b9fe36efd8b0519f085d"
 })
 
@@ -244,7 +254,7 @@ const campo19 = new Campo({
     }],
     preco: 300,
     descricao: "Estádio de futebol profissional do Sport Club Recife",
-    local: "Recife",
+    cidade: "Recife",
     autor: "6408b9fe36efd8b0519f085d"
 })
 
@@ -257,7 +267,7 @@ const campo20 = new Campo ({
     }],
     preco: 100,
     descricao: "Campo society com iluminação para jogos noturnos",
-    local: "Aracaju",
+    cidade: "Aracaju",
     autor: "6408b9fe36efd8b0519f085d"
 })
 const campo21 = new Campo ({
@@ -269,7 +279,7 @@ const campo21 = new Campo ({
     }],
     preco: 150,
     descricao: "Campo society próximo à orla de Aracaju",
-    local: "Aracaju",
+    cidade: "Aracaju",
     autor: "6408b9fe36efd8b0519f085d"
 })
 const campo22 = new Campo ({
@@ -281,7 +291,7 @@ const campo22 = new Campo ({
     }],
     preco: 80,
     descricao: "Campo society para jogos informais",
-    local: "Aracaju",
+    cidade: "Aracaju",
     autor: "6408b9fe36efd8b0519f085d"
 })
 const campo23 = new Campo ({
@@ -293,7 +303,7 @@ const campo23 = new Campo ({
     }],
     preco: 4000,
     descricao: "Estádio de futebol profissional do Club Sportivo Sergipe",
-    local: "Aracaju",
+    cidade: "Aracaju",
     autor: "6408b9fe36efd8b0519f085d"
 })
 

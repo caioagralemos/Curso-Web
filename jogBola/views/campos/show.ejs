@@ -6,10 +6,6 @@
         const lng = '<%= essecampo.geometry.coordinates[0] %>'
         const lat = '<%= essecampo.geometry.coordinates[1] %>'
     </script>
-    
-    <% if (essecampo.geometry.coordinates[0] && essecampo.geometry.coordinates[1]) { %>
-    <div id='map' style='width: 400px; height: 300px;'></div>
-    <% } %>
 
     <div class="row">
         <div class="col-6">
@@ -37,7 +33,10 @@
             <div class="card mb-3">
                 <div class="card-body">
                     <h5 class="card-title">
-                        <%= essecampo.titulo %>
+                        <%= essecampo.titulo %> 
+                        <% if (essecampo.verificado) { %>
+                         <img src="https://i.imgur.com/wvhMU4Q.png" alt="campo verificado!" style="width: 40px;">
+                        <% } %>
                     </h5>
                     <p class="card-text"><small class="text-muted">
                             <%= essecampo.endereco %>, <%= essecampo.cidade %>
@@ -74,7 +73,6 @@
                                 href="/campos/<%= essecampo._id %>/edit">Editar Campo</a>
                         </div>
                         <% } %>
-
                 </div>
                 <div class="card-footer text-muted">criado por @<%= essecampo.autor.username %>
                 </div>
@@ -83,63 +81,66 @@
 
 
         <div class="col-6">
-            <h1 class="m-3">Sua avaliação</h1>
-            <form action="/campos/<%= essecampo._id %>/reviews" method="POST" class="mb-3 p-3 needs-validation"
-                novalidate>
-                <div class="mb-1">
-                    <label class="form-label" for="review[rating]">Sua nota:</label>
-                    <fieldset class="starability-basic">
-                        <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="1" checked
-                            aria-label="No rating." />
-                        <input type="radio" id="first-rate1" name="review[rating]" value="1" />
-                        <label for="first-rate1" title="Péssimo">1</label>
-                        <input type="radio" id="first-rate2" name="review[rating]" value="2" />
-                        <label for="first-rate2" title="Ruim">2</label>
-                        <input type="radio" id="first-rate3" name="review[rating]" value="3" />
-                        <label for="first-rate3" title="Mais ou menos">3</label>
-                        <input type="radio" id="first-rate4" name="review[rating]" value="4" />
-                        <label for="first-rate4" title="Bom">4</label>
-                        <input type="radio" id="first-rate5" name="review[rating]" value="5" />
-                        <label for="first-rate5" title="Pica, tá?">5</label>
-                    </fieldset>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label" for="body">Sua avaliação:</label>
-                    <textarea class="form-control" name="review[body]" id="body" cols="30" rows="3" minlength="20"
-                        required></textarea>
-                    <div class="valid-feedback">
-                        Parece bom!
-                    </div>
-                    <div class="invalid-feedback">
-                        Fale um pouco sobre o que você achou! (min. 20 caracteres)
-                    </div>
-                </div>
-                <button class="btn btn-outline-success">Enviar</button>
-            </form>
-            <% for( let review of essecampo.reviews ) { %>
-                <div class="card mb-3 p-3">
-                    <div class="card-body">
-                        <h5 class="card-title">
-                            <p class="starability-result" data-rating='<%= review.rating %>'>
-                                Nota: <b>
-                                    <%= review.rating %>/5
-                                </b>
-                            </p>
-                        </h5>
-                        <div class="card-text">
-                            <%= review.body %>
-                        </div>
-                        <div class="card-text text-muted">de @<%= review.autor.username %>
-                        </div>
-                        <% if(currentUser && review.autor.equals(currentUser._id)) { %>
-                            <br>
-                            <form action="/campos/<%= essecampo._id %>/reviews/<%= review._id %>?_method=DELETE"
-                                method="POST">
-                                <button class="btn btn-danger"><small>Delete</small></button>
-                            </form>
-                            <% } %>
-                    </div>
-                </div>
+            <% if (essecampo.geometry.coordinates[0] && essecampo.geometry.coordinates[1]) { %>
+                <div id='map' style='width: auto; height: 300px; border-radius: 1%;'></div>
                 <% } %>
-            
-                <script src="/javascript/showPage.js"></script>
+                    <h1 class="m-3">Sua avaliação</h1>
+                    <form action="/campos/<%= essecampo._id %>/reviews" method="POST" class="mb-3 p-3 needs-validation"
+                        novalidate>
+                        <div class="mb-1">
+                            <label class="form-label" for="review[rating]">Sua nota:</label>
+                            <fieldset class="starability-basic">
+                                <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="1"
+                                    checked aria-label="No rating." />
+                                <input type="radio" id="first-rate1" name="review[rating]" value="1" />
+                                <label for="first-rate1" title="Péssimo">1</label>
+                                <input type="radio" id="first-rate2" name="review[rating]" value="2" />
+                                <label for="first-rate2" title="Ruim">2</label>
+                                <input type="radio" id="first-rate3" name="review[rating]" value="3" />
+                                <label for="first-rate3" title="Mais ou menos">3</label>
+                                <input type="radio" id="first-rate4" name="review[rating]" value="4" />
+                                <label for="first-rate4" title="Bom">4</label>
+                                <input type="radio" id="first-rate5" name="review[rating]" value="5" />
+                                <label for="first-rate5" title="Pica, tá?">5</label>
+                            </fieldset>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="body">Sua avaliação:</label>
+                            <textarea class="form-control" name="review[body]" id="body" cols="30" rows="3"
+                                minlength="20" required></textarea>
+                            <div class="valid-feedback">
+                                Parece bom!
+                            </div>
+                            <div class="invalid-feedback">
+                                Fale um pouco sobre o que você achou! (min. 20 caracteres)
+                            </div>
+                        </div>
+                        <button class="btn btn-outline-success">Enviar</button>
+                    </form>
+                    <% for( let review of essecampo.reviews ) { %>
+                        <div class="card mb-3 p-3">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <p class="starability-result" data-rating='<%= review.rating %>'>
+                                        Nota: <b>
+                                            <%= review.rating %>/5
+                                        </b>
+                                    </p>
+                                </h5>
+                                <div class="card-text">
+                                    <%= review.body %>
+                                </div>
+                                <div class="card-text text-muted">de @<%= review.autor.username %>
+                                </div>
+                                <% if(currentUser && review.autor.equals(currentUser._id)) { %>
+                                    <br>
+                                    <form action="/campos/<%= essecampo._id %>/reviews/<%= review._id %>?_method=DELETE"
+                                        method="POST">
+                                        <button class="btn btn-danger"><small>Delete</small></button>
+                                    </form>
+                                    <% } %>
+                            </div>
+                        </div>
+                        <% } %>
+
+                            <script src="/javascript/showPage.js"></script>

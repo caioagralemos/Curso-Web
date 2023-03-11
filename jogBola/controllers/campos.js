@@ -3,10 +3,28 @@ const mbxGeocoding = require('@mapbox/mapbox-sdk/services/geocoding')
 const mapboxToken = process.env.MAPBOX_TOKEN
 const geocoder = mbxGeocoding({ accessToken: mapboxToken })
 const {cloudinary} = require('../cloudinary')
+const { string } = require('joi')
 
 module.exports.index = async (req, res) => {
-    const campos = await Campo.find({})
-    res.render('campos/index', {campos})
+    let {cidadequery, oficialquery} = req.query
+    if(cidadequery) {
+        if(oficialquery) {
+            const campos = await Campo.find({cidade: cidadequery, verificado: true})
+            res.render('campos/index', {campos})
+        } else {
+            const campos = await Campo.find({cidade: cidadequery})
+            res.render('campos/index', {campos})
+        }
+    }
+    else {
+        if(oficialquery) {
+            const campos = await Campo.find({verificado: true})
+            res.render('campos/index', {campos})
+        } else {
+            const campos = await Campo.find({})
+            res.render('campos/index', {campos})
+        }
+    }
 }
 
 module.exports.novoCampoGet = (req, res) => {
@@ -25,9 +43,14 @@ module.exports.novoCampoPost = async (req, res, next) => {
         } 
     let novoCampo = new Campo(req.body.campo)
     novoCampo.imagem = req.files.map(f => ({url: f.path, filename: f.filename}))
+    if(req.user._id == '6408b9fe36efd8b0519f085d') {
+        novoCampo.verificado = true
+    } else {
+        novoCampo.verificado = false
+    }
     novoCampo.autor = req.user._id
     const geoData = await geocoder.forwardGeocode({
-        query: `${novoCampo.endereco}, ${novocampo.cidade}`,
+        query: `${novoCampo.endereco}, ${novoCampo.cidade}`,
         limit: 1
     }).send()
     novoCampo.geometry = geoData.body.features[0].geometry
@@ -54,7 +77,8 @@ module.exports.campoEditGet = async (req, res, next) => {
         req.flash('error', 'Calma lá, jogador(a)! Você precisa entrar para fazer isso!')
         return res.redirect(`/campos/${essecampo._id}`)
         } 
-    if(!essecampo.autor.equals(req.user._id)) {
+    console.log(req.user._id)
+    if(!essecampo.autor.equals(req.user._id))  {
             req.flash('error', 'Calma lá, jogador(a)! Você não tem permissão pra fazer isso! Cartão amarelo pra você!')
             return res.redirect(`/campos/${essecampo._id}`)
     }
