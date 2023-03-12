@@ -2,7 +2,7 @@
     <!-- chamar layout passa esse arquivo para o boilerplate como body -->
     <script>
         const mapToken = '<%- process.env.MAPBOX_TOKEN %>'
-        const campos = <%- JSON.stringify(campos) %>
+        const campos = {features: <%- JSON.stringify(campos) %>}
     </script>
 
     <div id="map" style="width: 100%; height: 300px; margin-bottom: 2%;"></div>

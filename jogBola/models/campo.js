@@ -2,6 +2,8 @@ const mongoose = require('mongoose')
 const Review = require('./review')
 const Schema = mongoose.Schema
 
+const opts = {toJSON: {virtuals: true}}
+
 const campoSchema = new Schema ({
     titulo: String,
     preco: Number,
@@ -38,6 +40,10 @@ const campoSchema = new Schema ({
             ref: 'Review'
         }
     ]
+}, opts)
+
+campoSchema.virtual('properties.popUpMarkup').get(function () {
+    return `<strong><a href="/campos/${this.id}">${this.titulo}</a></strong>`
 })
 
 campoSchema.post('findOneAndDelete', async function (doc) {
