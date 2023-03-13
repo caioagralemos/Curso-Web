@@ -47,3 +47,5 @@ map.on('load', () => {
         }
     );
 })
+
+map.addControl(new mapboxgl.NavigationControl());

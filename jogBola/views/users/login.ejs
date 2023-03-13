@@ -1,31 +1,41 @@
 <% layout('layouts/boilerplate') %>
-    <h1 class="mb-3">Entrar</h1>
 
-    <form action="/login" method="POST" class="needs-validation" novalidate>
-        <div class="mb-3">
-            <label class="form-label" for="username">Nome de usuário</label>
-            <input class="form-control" type="text" id="username" name="username" placeholder="ex: messinoCRB" minlength="6" required>
-            <div class="valid-feedback">
-                Parece bom!
+    <div class="container justify-content-center align-itens-center mt-5">
+        <div class="row">
+            <div class="col-md-6 offset-md-3 col-xl-4 offset-xl-4 shadow">
+                <div class="">
+                    <img src="https://i.imgur.com/TVEWYCr.jpg" alt="" class="card-img-top ms-0 me-0">
+                    <div class="card-body">
+                        <h5 class="card-title my-2">Entrar</h5>
+                        <form action="/login" method="POST" class="needs-validation" novalidate>
+                            <div class="mb-3">
+                                <label class="form-label" for="username">Nome de usuário</label>
+                                <input class="form-control" type="text" id="username" name="username"
+                                    placeholder="ex: messinoCRB" minlength="6" required>
+                                <div class="valid-feedback">
+                                    Parece bom!
+                                </div>
+                                <div class="invalid-feedback">
+                                    Por favor, insira um nome de usuário com pelo menos 6 caracteres.
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="password">Senha</label>
+                                <input class="form-control" type="password" id="password" name="password"
+                                    placeholder="ex: canetazul" minlength="6" required>
+                                <div class="valid-feedback">
+                                    Parece bom!
+                                </div>
+                                <div class="invalid-feedback">
+                                    Por favor, insira uma senha com pelo menos 6 caracteres.
+                                </div>
+                            </div>
+                            <div class="mb-3 d-grid gap-2">
+                                <button class="btn btn-outline-success">Enviar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
-            <div class="invalid-feedback">
-                Por favor, insira um nome de usuário com pelo menos 6 caracteres.
-              </div>    
         </div>
-        <div class="mb-3">
-            <label class="form-label" for="password">Senha</label>
-            <input class="form-control" type="password" id="password" name="password" placeholder="ex: canetazul" minlength="6" required>
-            <div class="valid-feedback">
-                Parece bom!
-            </div>
-            <div class="invalid-feedback">
-                Por favor, insira uma senha com pelo menos 6 caracteres.
-              </div>  
-        </div>
-        <div class="mb-3">
-            <button class="btn btn-outline-success">Enviar</button>
-        </div>
-    </form>
-
-    <br>
-    <a class="btn btn-success mb-4" href="/">Home</a>
+    </div>
