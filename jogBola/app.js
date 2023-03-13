@@ -78,7 +78,7 @@ app.use('/campos', campoRoutes)
 app.use('/campos/:id/reviews', reviewRoutes)
 
 app.get("/", (req, res) => {
-    res.render("home.ejs")
+    res.render("home/home.ejs")
 })
 
 app.all("*", (req, res, next) => {

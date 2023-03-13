@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jogBola.com</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="shortcut icon" href="https://i.imgur.com/ppvh7XV.png" type="image/png">
+    <link rel="stylesheet" href="/stylesheets/home.css">
+</head>
+
+<body class="cover-container d-flex flex-column text-center w-100 mx-auto p-3 text-white bg-dark">
+
+    <header class="header mb-5">
+        <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-success">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/"><img id="navbarlogo" src="https://i.imgur.com/67Fm4y0.png"></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav ms-auto">
+                        <a class="nav-link" href="/campos">Campos</a>
+                        <% if (req.isAuthenticated()) { %>
+                            <a href="/logout" class="nav-link">Sair</a>
+                        <% } else { %>
+                            <a href="/login" class="nav-link">Entrar</a>
+                            <a href="/register" class="nav-link">Crie sua Conta</a>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <br>
+    </header>
+
+    <main class="position-absolute top-50 start-50 translate-middle">
+        <%- include('../partials/flash.ejs') %>
+        <h1><img src="https://i.imgur.com/pih5hB1.png" alt="logo" id="logocenter"></h1>
+        <p class="lead"> <% if (req.isAuthenticated()) { %>
+            Bem vindo(a) de volta ao jogBola, <%= currentUser.name %>!
+        <% } else { %>
+            Bem vindo(a) ao jogBola!
+         <% } %> <br>Deixe-nos ajudá-lo a encontrar o campo de futebol perfeito para sua próxima partida - Cadastre-se agora e comece a pesquisar!</p>
+        <a href="/campos" class="btn btn-lg btn-outline-success">Explorar os Campos</a>
+    </main>
+
+    <footer class="footer py-3 mt-auto">
+        <div class="container">
+            <span class="text-success">&copy; 2023 <a href="http://caioagralemos.com" class="link text-success">caioagralemos</a></span>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+                        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+                        crossorigin="anonymous"></script>
+                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
+                        integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
+                        crossorigin="anonymous"></script>
+</body>
+
+</html>

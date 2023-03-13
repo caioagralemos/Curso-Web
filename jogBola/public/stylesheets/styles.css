@@ -71,3 +71,12 @@
   margin-left: auto;
   margin-bottom: 10px;
 }
+
+a{
+  text-decoration: none;
+  transition: 0.5s;
+}
+
+a:hover{
+  text-decoration: underline;
+}
