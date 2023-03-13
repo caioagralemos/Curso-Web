@@ -3,14 +3,37 @@ const router = express.Router({mergeParams: true})
 const catchAsync = require('../utils/catchAsync')
 const Campo = require('../models/campo')
 const Review = require('../models/review')
-const Joi = require('joi')
+const BaseJoi = require('joi')
 const ExpressError = require('../utils/ExpressError')
 const reviewControllers = require('../controllers/reviews')
+
+const sanitizeHtml = require('sanitize-html')
+
+const extension = (joi) => ({
+    type: 'string',
+    base: joi.string(),
+    messages: {
+        'string.escapeHTML': '{{#label} must not include HTML!}'
+    }, rules: {
+        escapeHTML: {
+            validate(value, helpers) {
+                const clean = sanitizeHtml(value, {
+                    allowedTags: [],
+                    allowedAttributes: {},
+                })
+                if(clean !== value) return helpers.error('string.escapeHTML', { value })
+                return clean
+            }
+        }
+    }
+})
+
+const Joi = BaseJoi.extend(extension)
 
 const validateReview = (req, res, next) => {
     let reviewSchemaVAL = Joi.object({
         review: Joi.object({
-            body: Joi.string().required(),
+            body: Joi.string().required().escapeHTML(),
             rating: Joi.number().required()
         }).required()
     })

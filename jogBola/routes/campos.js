@@ -3,7 +3,7 @@ const router = express.Router({mergeParams: true})
 const catchAsync = require('../utils/catchAsync')
 const Campo = require('../models/campo')
 const Review = require('../models/review')
-const Joi = require('joi')
+const BaseJoi = require('joi')
 const ExpressError = require('../utils/ExpressError')
 const flash = require('connect-flash')
 const campoControllers = require('../controllers/campos')
@@ -11,16 +11,39 @@ const multer = require('multer')
 const {storage} = require('../cloudinary')
 const upload = multer({ storage })
 
+const sanitizeHtml = require('sanitize-html')
+
+const extension = (joi) => ({
+    type: 'string',
+    base: joi.string(),
+    messages: {
+        'string.escapeHTML': '{{#label} must not include HTML!}'
+    }, rules: {
+        escapeHTML: {
+            validate(value, helpers) {
+                const clean = sanitizeHtml(value, {
+                    allowedTags: [],
+                    allowedAttributes: {},
+                })
+                if(clean !== value) return helpers.error('string.escapeHTML', { value })
+                return clean
+            }
+        }
+    }
+})
+
+const Joi = BaseJoi.extend(extension)
+
 const validateCampo = (req, res, next) => {
     let campoSchemaVAL = Joi.object({
         campo: Joi.object({
-            titulo: Joi.string().required(),
+            titulo: Joi.string().required().escapeHTML(),
             preco: Joi.number().required().min(0),
-            descricao: Joi.string().required(),
-            endereco: Joi.string().required(),
-            telefone: Joi.string().allow(''),
-            instagram: Joi.string().allow(''),
-            cidade: Joi.string().required()
+            descricao: Joi.string().required().escapeHTML(),
+            endereco: Joi.string().required().escapeHTML(),
+            telefone: Joi.string().allow('').escapeHTML(),
+            instagram: Joi.string().allow('').escapeHTML(),
+            cidade: Joi.string().required().escapeHTML()
         }).required(),
         deletarimagens: Joi.array()
     })

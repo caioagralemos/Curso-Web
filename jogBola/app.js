@@ -1,6 +1,4 @@
-if (process.env.NODE_ENV !== "production") {
-    require('dotenv').config()
-}
+require('dotenv').config()
 
 const express = require('express')
 const path = require('path')
@@ -16,6 +14,8 @@ const flash = require('connect-flash')
 const passport = require('passport')
 const localStrategy = require('passport-local')
 const User = require('./models/user')
+const mongoSanitize = require('express-mongo-sanitize')
+const helmet = require('helmet')
 
 mongoose.set('strictQuery', false)
 
@@ -39,8 +39,60 @@ app.set('views', path.join(__dirname, 'views'))
 app.use(methodOverride('_method'))
 app.use(express.urlencoded({ extended: true }))
 app.use(express.static(path.join(__dirname, 'public')))
+app.use(mongoSanitize())
+const scriptSrcUrls = [
+    "https://stackpath.bootstrapcdn.com/",
+    "https://api.tiles.mapbox.com/",
+    "https://api.mapbox.com/",
+    "https://kit.fontawesome.com/",
+    "https://cdnjs.cloudflare.com/",
+    "https://cdn.jsdelivr.net/",
+    "https://res.cloudinary.com/dv5vm4sqh/"
+];
+const styleSrcUrls = [
+    "https://kit-free.fontawesome.com/",
+    "https://stackpath.bootstrapcdn.com/",
+    "https://api.mapbox.com/",
+    "https://api.tiles.mapbox.com/",
+    "https://fonts.googleapis.com/",
+    "https://use.fontawesome.com/",
+    "https://cdn.jsdelivr.net/",
+    "https://res.cloudinary.com/dv5vm4sqh/"
+];
+const connectSrcUrls = [
+    "https://*.tiles.mapbox.com",
+    "https://api.mapbox.com",
+    "https://events.mapbox.com",
+    "https://res.cloudinary.com/dv5vm4sqh/"
+];
+const fontSrcUrls = [ "https://res.cloudinary.com/dv5vm4sqh/" ];
+ 
+app.use(
+    helmet.contentSecurityPolicy({
+        directives : {
+            defaultSrc : [],
+            connectSrc : [ "'self'", ...connectSrcUrls ],
+            scriptSrc  : [ "'unsafe-inline'", "'self'", ...scriptSrcUrls ],
+            styleSrc   : [ "'self'", "'unsafe-inline'", ...styleSrcUrls ],
+            workerSrc  : [ "'self'", "blob:" ],
+            objectSrc  : [],
+            imgSrc     : [
+                "'self'",
+                "blob:",
+                "data:",
+                "https://res.cloudinary.com/", //SHOULD MATCH YOUR CLOUDINARY ACCOUNT!
+                "https://images.unsplash.com/",
+                "https://i.imgur.com"
+            ],
+            fontSrc    : [ "'self'", ...fontSrcUrls ],
+            mediaSrc   : [ "https://res.cloudinary.com/dv5vm4sqh/" ],
+            childSrc   : [ "blob:" ]
+        }
+    })
+);
 
 const sessionConfig = {
+    name: 'panda.campolocal1',
     secret: 'placeholdersecret',
     resave: false,
     saveUninitialized: true,
