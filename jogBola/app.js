@@ -10,16 +10,18 @@ const campoRoutes = require('./routes/campos')
 const reviewRoutes = require('./routes/reviews')
 const userRoutes = require('./routes/users')
 const session = require('express-session')
+const MongoStore = require('connect-mongo')
 const flash = require('connect-flash')
 const passport = require('passport')
 const localStrategy = require('passport-local')
 const User = require('./models/user')
 const mongoSanitize = require('express-mongo-sanitize')
 const helmet = require('helmet')
+const dbUrl = process.env.DB_URL
 
 mongoose.set('strictQuery', false)
 
-mongoose.connect('mongodb://localhost:27017/jogBola', {
+mongoose.connect(dbUrl, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
@@ -91,7 +93,19 @@ app.use(
     })
 );
 
+const store = new MongoStore({
+    mongoUrl: dbUrl,
+    secret: 'chavesecretanaotaosecreta--jogbola.com',
+    autoRemove: 'interval',
+    autoRemoveInterval: 60 * 24 * 30
+})
+
+store.on("error", function(e) {
+    console.log('erro de save na sessão', e)
+})
+
 const sessionConfig = {
+    store,
     name: 'panda.campolocal1',
     secret: 'placeholdersecret',
     resave: false,
@@ -102,12 +116,7 @@ const sessionConfig = {
     }
 }
 
-app.use(session({
-    secret: 'chavesecretanaotaosecreta--jogbola.com',
-    resave: false,
-    saveUninitialized: false,
-    cookie: { maxAge: 7 * 24 * 60 * 60 * 1000 } // define a validade do cookie para 7 dias
-  }))
+app.use(session(sessionConfig))
 app.use(flash())
 
 app.use(passport.initialize()) // inicializa o passport
