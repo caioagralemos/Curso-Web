@@ -8,7 +8,7 @@
     </script>
 
     <div class="row">
-        <div class="col-6">
+        <div class="col-6 col-12">
             <div id="carrosselCampos" class="carousel slide">
                 <div class="carousel-inner">
                     <% essecampo.imagem.forEach((img, i)=> { %>
@@ -80,7 +80,7 @@
         </div>
 
 
-        <div class="col-6">
+        <div class="col-6 col-12">
             <% if (essecampo.geometry.coordinates[0] && essecampo.geometry.coordinates[1]) { %>
                 <div id='map' style='width: auto; height: 300px; border-radius: 1%;'></div>
                 <% } %>

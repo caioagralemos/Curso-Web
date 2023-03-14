@@ -96,8 +96,7 @@ app.use(
 const store = new MongoStore({
     mongoUrl: dbUrl,
     secret: 'chavesecretanaotaosecreta--jogbola.com',
-    autoRemove: 'interval',
-    autoRemoveInterval: 60 * 24 * 30
+    autoRemove: 'default',
 })
 
 store.on("error", function(e) {

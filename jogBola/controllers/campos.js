@@ -4,15 +4,38 @@ const mapboxToken = process.env.MAPBOX_TOKEN
 const geocoder = mbxGeocoding({ accessToken: mapboxToken })
 const {cloudinary} = require('../cloudinary')
 const { string } = require('joi')
+const natural = require('natural')
+const tokenizer = new natural.WordTokenizer()
+const stopWords = natural.stopwords
+const diacritic = require('diacritic')
 
-module.exports.index = async (req, res) => {
+function normalizeText(text) {
+    // Remova acentos
+    const textWithoutDiacritics = diacritic.clean(text);
+  
+    // Tokenize o texto em palavras
+    const words = tokenizer.tokenize(textWithoutDiacritics);
+    
+    // Converta todas as palavras para minúsculas
+    const normalizedWords = words.map(word => word.toLowerCase());
+    
+    // Remova as stop words
+    const filteredWords = normalizedWords.filter(word => !stopWords.includes(word));
+    
+    // Junte as palavras novamente em uma única string
+    return filteredWords.join(' ');
+  }
+  
+
+  module.exports.index = async (req, res) => {
     let {cidadequery, oficialquery} = req.query
-    if(cidadequery) {
+    const normalizedQuery = normalizeText(cidadequery)
+    if(normalizedQuery) {
         if(oficialquery) {
-            const campos = await Campo.find({cidade: cidadequery, verificado: true})
+            const campos = await Campo.find({cidade: new RegExp(normalizedQuery, "i"), verificado: true})
             res.render('campos/index', {campos})
         } else {
-            const campos = await Campo.find({cidade: cidadequery})
+            const campos = await Campo.find({cidade: new RegExp(cidadequery, "i")})
             res.render('campos/index', {campos})
         }
     }
